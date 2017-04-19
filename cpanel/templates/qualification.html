@@ -1,0 +1,69 @@
+{% extends "dashboard.html" %}
+{% load staticfiles crispy_forms_tags %}
+
+{% block stylesheet %}
+	{# upgdare bootstrap switch #}
+	<link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+	<style>
+		.bootstrap-switch { height: 1.7em }
+
+		.hj-row:nth-child(odd){
+			background-color: #f5f5f5;
+		}
+		.hj-row{
+		   	margin-right: -1px;
+		   	margin-top: 0;
+		   	margin-left: 0;
+		   	margin-bottom: 0;
+		    border-top: 1px solid #ddd;
+		}
+	</style>
+{% endblock stylesheet %}
+
+{% block dashboard_header %}
+	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
+{% endblock dashboard_header %}
+{% block qualification_header %}
+	<div class="col-md-5"><a href="{% url 'qualifications' %}" class="float-xs-right">
+		<h3>QUALIFICATIONS</h3><hr>
+	</a></div>
+{% endblock qualification_header %}
+{% block skills_header %}
+	<div class="col-md-3"><a href="" class="float-xs-right">
+		TESTIMONIALS
+	</a></div>
+{% endblock skills_header %}
+
+{% block container %}
+	{% for object in object_list %}
+		{% if forloop.first %}<div class="row">{% endif %}
+		<div class="col-md-4 m-v">
+			<div class="m-v b-b" style="height:60px;">
+				<strong>{{ object.name }}</strong><br>
+			</div>
+			<div class="card-body">
+				{% for obj in object.qualification_set.all|slice:"4" %}
+					<p>
+						<a href="#" data-remote="{% url 'qualification_detail' obj.id %}" data-toggle="modal" data-target="#myModal">{{ obj.name }}</a>
+					</p>
+				{% endfor %}
+			</div>
+		</div>
+	{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
+	{% endfor %}
+
+ 	<a data-remote="{% url 'qualification_add' %}" class="text-white" data-target="#myModalLg" data-toggle="modal">
+		<div class="rounder-corner" style="float:left;  right: 30px; bottom: 30px; background-color: #009688; width: 75px; height: 75px; padding: 25px; position: fixed; border-radius: 45px;">
+	   		<i class="fa fa-plus fa-fw"></i>
+		</div>
+  	</a>
+{% endblock container %}
+
+
+{% block javascript %}
+	<script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+    <script type="text/javascript" src="/static/redactor/redactor.js"></script>
+    <script type="text/javascript" src="/static/redactor/langs/en.js"></script>
+{% endblock javascript %}

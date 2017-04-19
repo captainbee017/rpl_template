@@ -1,0 +1,56 @@
+<div class="col-md-12 col-xs-12 col-sm-12 no-padding mt-1" id="qualification_form">
+    <form action="{% url 'qualification_search' %}" method="GET">
+        <div class="">
+            <div class="col-md-12 col-xs-12 col-sm-12 no-padding mt-1">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        <div class="input-group">
+                            {# <input type="text" name="q" class="form-control input-lg qualification_search typeahead" value="{% if query_text %}{{ query_text }}{% endif %}" placeholder="Enter the course you want to study" id="searchText"> #}
+                            <input type="text" name="q" class="form-control input-lg qualification_search typeahead" value="{% if query_text %}{{ query_text }}{% endif %}" placeholder="Enter the course you want to study">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn secondary-green input-lg" style="border-color: #818A91 !important">SEARCH</button>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- List group -->
+                    <ul id="autolist" class="list-group">
+                        <div id="autocompleteTest">
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% comment %}
+<div class="col-md-12 col-xs-12 col-sm-12 no-padding mt-1" id="qualification_form">
+    <form action="{% url 'qualification_search' %}" method="GET">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control input-lg qualification_search typeahead" value="{% if query_text %}{{ query_text }}{% endif %}" placeholder="Enter the course you want to study">
+            <span class="input-group-btn">
+                <button type="submit" class="btn secondary-green input-lg" style="border-color: #818A91 !important">SEARCH</button>
+            </span>
+        </div>
+    </form>
+</div>
+{% endcomment %}
+
+<style>
+.list-group-item:hover{
+    cursor: pointer;
+}
+
+.panel>.list-group {
+    position: absolute;
+    width: 100%;
+    z-index: 201;
+}
+
+.panel>.list-group:last-child .list-group-item:last-child{
+    border-bottom: 0;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+</style>

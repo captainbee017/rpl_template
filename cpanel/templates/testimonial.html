@@ -1,0 +1,86 @@
+{% extends "dashboard.html" %}
+{% load staticfiles crispy_forms_tags %}
+
+{% block stylesheet %}
+	{# upgdare bootstrap switch #}
+	<link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+	<style>
+		.bootstrap-switch { height: 1.7em }
+
+		.hj-row:nth-child(odd){
+			background-color: #f5f5f5;
+		}
+		.hj-row{
+		   	margin-right: -1px;
+		   	margin-top: 0;
+		   	margin-left: 0;
+		   	margin-bottom: 0;
+		    border-top: 1px solid #ddd;
+		}
+	</style>
+{% endblock stylesheet %}
+
+{% block dashboard_header %}
+	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
+{% endblock dashboard_header %}
+{% block qualification_header %}
+	<div class="col-md-3"><a href="{% url 'qualifications' %}" class="float-xs-right">
+		QUALIFICATIONS
+	</a></div>
+{% endblock qualification_header %}
+{% block testimonials_header %}
+	<div class="col-md-5"><a href="" class="float-xs-right">
+		<h3>TESTIMONIALS</h3><hr>
+	</a></div>
+{% endblock testimonials_header %}
+
+{% block container %}
+	{% for object in object_list %}
+		<div class="col-md-8 offset-md-2">
+			<div class="m-v b-b" style="height:60px;">
+				<img src="{{ object.dp.url }}" alt="">
+				<strong>{{ object.name }}</strong><br>
+				<p>{{object.message}}</p>
+			</div>
+		</div>
+	{% empty %}
+		<div class="col-md-8 offset-md-2">
+			<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+				<div class="col-md-2">
+					<div class="media-object">
+	                      <div class="box-effect">
+	                          <div class="box-effect-img"> 
+	                          <i class="fa fa user-circle fa-3x"></i>
+	                          {# <img src="{{ request.user.profile_pic }}" class="n-w-150"/> #}
+	                          </div>
+	                          <div class="box-effect-content n-w-150">
+	                          	{{ form.dp }}
+	                          	{% comment %}
+	                              <h3 class="box-effect-title p-v">
+	                                  <a class="btn btn-primary btn-sm text-white" data-target="#myModal" data-toggle="modal" data-remote="">Add Picture</a>
+	                              </h3>
+	                          	{% endcomment %}
+	                          </div>
+	                      </div>
+	                  </div>
+				</div>
+				<div class="col-md-10">
+					{{ form.name }}
+					{{ form.designation }}
+					{{ form.message }}
+				</div>
+				<div class="col-md-12 offset-md-5">
+	            	<button class="btn btn-outline-primary " type="submit" style="border-radius: 0px !important;">SAVE</button>
+	            </div>
+			</form>
+		</div>
+	{% endfor %}
+{% endblock container %}
+
+
+{% block javascript %}
+	<script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+    <script type="text/javascript" src="/static/redactor/redactor.js"></script>
+    <script type="text/javascript" src="/static/redactor/langs/en.js"></script>
+{% endblock javascript %}

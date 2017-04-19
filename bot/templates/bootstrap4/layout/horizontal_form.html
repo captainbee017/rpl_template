@@ -1,0 +1,31 @@
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+	{% if field|is_radioselect %}
+        <div id="div_{{ field.auto_id }}" class="checkbox{% if wrapper_class %} {{ wrapper_class }}{% endif %}">
+        	<div class="offset-md-4 col-md-6 form-inline form-group">
+	            <label for="{{ field.id_for_label }}" class="{% if field.field.required %} requiredField{% endif %}">
+	                {{ field.label|safe }}
+	                {% crispy_field field 'class' 'checkbox' %}
+	            </label>
+        	</div>
+        </div>
+    {% else %}
+	    <div class="{% if form_show_errors and field.errors %} has-danger {% endif %}{{ field_class }}  {% if flat_attrs %} {{ flat_attrs|safe }} {% endif %}">
+			<div class="row">
+		   		<div class="col-md-4 text-xs-left text-sm-right text-md-right">
+		   			<label for="{{ field.id_for_label }}" class=" {% if field.field.required %} requiredField {% endif %}">
+		                {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+		   			</label>
+		   		</div>
+		   		<div class="col-md-6">
+		   			{% crispy_field field %}
+		   			{% include "bootstrap4/layout/help_text.html" %}
+		   			{% include "bootstrap4/layout/field_errors_block.html" %}
+		   		</div>
+		   </div>
+		</div>
+	{% endif %}
+{% endif %}

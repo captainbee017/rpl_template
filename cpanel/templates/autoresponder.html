@@ -1,0 +1,64 @@
+{% extends "dashboard.html" %}
+{% load staticfiles crispy_forms_tags %}
+
+{% block stylesheet %}
+	{# upgdare bootstrap switch #}
+	<link rel="stylesheet" href="{% static "css/bootstrap-switch.css" %}">
+	
+	<link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+	<style>
+		.bootstrap-switch { height: 1.7em }
+	</style>
+{% endblock stylesheet %}
+
+{% block dashboard_header %}
+	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
+{% endblock dashboard_header %}
+{% block autoresponder_header %}
+	<h3>AUTORESPONDER</h3><hr>
+{% endblock autoresponder_header %}
+
+{% block container %}
+	<div class="col-md-8 offset-md-2">
+		<form action="" method="POST">{% csrf_token %}
+			<div class="col-md-12 b-b m-v no-padding">
+				<div class="form-group">
+    				<div class="row">
+    					<div class="col-md-10">
+    						<label class="" for="">
+    							{% if object.is_active %}
+    								Disable AutoResponder to send an email to skill assessment users
+    							{% else %}
+									Enable AutoResponder to send an email to skill assessment users
+    							{% endif %}
+							</label>
+    					</div>
+    					<div class="col-md-2">
+		    				<span class="float-xs-right">{{ form.is_active }}</span>
+		    				<span class="small">{{ form.is_active.help_text }}</span>
+    					</div>
+    				</div>
+    			</div>
+			</div>
+			<div class="form-group">
+                {{ form.body|as_crispy_field }}
+            </div>
+            <div class="col-md-12 offset-md-5">
+            	<button class="btn btn-outline-primary " type="submit" style="border-radius: 0px !important;">SAVE</button>
+            </div>
+		</form>
+	</div>
+{% endblock container %}
+
+{% block javascript %}
+	<script type="text/javascript" src="/static/redactor/jquery.redactor.init.js"></script>
+    <script type="text/javascript" src="/static/redactor/redactor.js"></script>
+    <script type="text/javascript" src="/static/redactor/langs/en.js"></script>
+
+	<script src="{% static "js/bootstrap-switch.js" %}"></script>
+	<script>
+	 	$.fn.bootstrapSwitch.defaults.size = 'mini';
+	    $("[type='checkbox']").bootstrapSwitch();
+	</script>
+{% endblock javascript %}
