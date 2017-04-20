@@ -89,12 +89,14 @@ WSGI_APPLICATION = 'councelar.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'counselor',
-        'USER': 'root',
-        'PASSWORD': 'hellonepal',
-        'HOST': '127.0.0.1',
-        'PORT': 5432
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'counselor',
+        # 'USER': 'root',
+        # 'PASSWORD': 'abhishek',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': 5432
     }
 }
 
