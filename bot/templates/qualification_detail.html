@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block stylesheet %}
+
+<style>
+
+</style>
+{% endblock %}
+
+{% block nav_qualification %}active b-b{% endblock %}
+
+{% block primary_container %}
+<section class="search_section" id="search">
+    <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" height="30%" class="img-fluid">
+    <div class="container">
+        <div class="row">
+            {# search box #}
+            <div class="" style="position: absolute; z-index: 101; top: 155px; text-align: center;">
+                <h1><strong>
+                    <p>CERTIFICATE III IN BUSINESS ADMINISTRATION</p>
+                </strong></h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="details">
+	<div class="container">
+		<div class="col-md-8" style="background-color: white;">
+			<h3>Course Description</h3><hr>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+			</p>
+			<h3>Potential Job Roles</h3><hr>
+			<ul class="unstyled">
+				<li>Nullam dictum felis eu pede mollis pretium.</li>
+				<li>Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+				<li>Aenean commodo ligula eget dolor. Aenean massa.</li>
+			</ul>
+			<h3>Study Pathways</h3><hr>
+			<ul class="unstyled">
+				<li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+			</ul>
+			<h3>Course Fees and payment Option</h3><hr>
+			<p>
+				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+			</p>
+			<h3>Qualification Packaging Rules</h3><hr>
+			<p>
+				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+			</p>
+			<h3>How it Works?</h3><hr>
+			<p>
+				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+			</p>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group" style="margin: 20px 0;">
+				<div class="input-group">
+                    <input type="text" placeholder="Search Qualifications" class="form-control input-lg" id="search">
+					<div class="input-group-addon addon-lg"><i class="fa fa-search"></i></div>
+				</div>
+            </div>
+		
+			<h3>Browse</h3><hr>
+			<ul>
+				<li class="p-v">Retail Service</li>
+				<li class="p-v">Travel, Tourism and Hospitality</li>
+				<li class="p-v">Childcare and Community Services</li>
+				<li class="p-v">Training and Education Training</li>
+				<li class="p-v">Creative Arts and Culture Training</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

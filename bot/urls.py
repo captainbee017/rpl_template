@@ -5,7 +5,8 @@ Langing page urls
 from django.conf.urls import url, include
 
 from bot.views.index import (
-	LandingPageView, QualificationView, PartnersView, ContactUsView, ApplyNowView)
+	LandingPageView, QualificationView, QualificationDetailView,
+	PartnersView, ContactUsView, ApplyNowView)
 from bot.views.qualification_search import QualificationSearch
 from bot.views.cp import CPAuthView
 from bot.views.fsa import SkillAsessment
@@ -22,6 +23,9 @@ urlpatterns = (
 
 	url(r'^qualification/$',
 		QualificationView.as_view(), name='qualification_page'),
+
+	url(r'^qualification/detail/$',
+		QualificationDetailView.as_view(), name='qualification_detail'),
 
 	url(r'^skill-asessment/$',
 		SkillAsessment.as_view(), name='skill_asessment'),

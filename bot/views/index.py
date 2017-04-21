@@ -46,6 +46,10 @@ class QualificationView(TemplateView):
 	template_name = 'qualification_page.html'
 
 
+class QualificationDetailView(TemplateView):
+	template_name = 'qualification_detail.html'
+
+
 class RPLSkillRecognitionView(TemplateView):
 	template_name = 'skill_asessment_form.html'
 
