@@ -47,6 +47,8 @@
 					<p>
 						<a href="#" data-remote="{% url 'qualification_detail' obj.id %}" data-toggle="modal" data-target="#myModal">{{ obj.name }}</a>
 					</p>
+				{% empty %}
+					<div class="alert alert-warning">No Qualification under this category </div>
 				{% endfor %}
 			</div>
 		</div>
@@ -54,7 +56,7 @@
     {% if forloop.last %}</div>{% endif %}
 	{% endfor %}
 
- 	<a data-remote="{% url 'qualification_add' %}" class="text-white" data-target="#myModalLg" data-toggle="modal">
+ 	<a href="{% url 'qualification_add' %}" class="text-white">
 		<div class="rounder-corner" style="float:left;  right: 30px; bottom: 30px; background-color: #009688; width: 75px; height: 75px; padding: 25px; position: fixed; border-radius: 45px;">
 	   		<i class="fa fa-plus fa-fw"></i>
 		</div>

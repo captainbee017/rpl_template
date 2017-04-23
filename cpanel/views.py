@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
-	TemplateView, FormView, ListView, DetailView, CreateView)
+	TemplateView, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView)
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 from bot.models import (
 	EmailContent, QualificationCategory, Qualification, NewslettterRequest,
 	Testimonial)
@@ -12,15 +15,11 @@ from django.http import HttpResponseRedirect
 from datetime import timedelta
 from django.utils import timezone
 
-# Create your views here.
 
-
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
 	template_name = 'dashboard.html'
 	benchmark = 30
 	param = 'Days'
-	# params sample
-	# ['Days', 'Weeks', 'Months']
 
 	def get_context_data(self, *args, **kwargs):
 		ctx = super().get_context_data(*args, **kwargs)
@@ -47,41 +46,21 @@ class DashboardView(TemplateView):
 		return data
 
 
-class AutoResponderView(FormView):
+class AutoResponderView(LoginRequiredMixin, UpdateView):
 	model = EmailContent
 	form_class = AutoResponderForm
 	template_name = 'autoresponder.html'
+	success_url = reverse_lazy('autoresponder')
 
-	def dispatch(self, *args, **kwargs):
+	def get_object(self, *args, **kwargs):
 		try:
-			self.obj = EmailContent.objects.get(is_active=True)
-		except EmailContent.DoesNotExist:
-			self.obj = None
-		return super().dispatch(*args, **kwargs)
-
-	def get_form_kwargs(self, *args, **kwargs):
-		kwargs = super().get_form_kwargs(*args, **kwargs)
-		kwargs['initial'] = {
-			'is_active': self.obj.is_active if self.obj else None,
-			'body': self.obj.body if self.obj else None
-		}
-		return kwargs
-
-	def get_context_data(self, *args, **kwargs):
-		ctx = super().get_context_data(*args, **kwargs)
-		ctx['object'] = self.obj
-		return ctx
-
-	def form_valid(self, form):
-		obj, created = EmailContent.objects.update_or_create(
-			is_active=True,
-			defaults={
-				'body': form.cleaned_data['body']
-			})
-		return HttpResponseRedirect(reverse('autoresponder'))
+			obj = EmailContent.objects.get(is_active=True)
+		except EmailContant.DoesNotExist:
+			obj = EmailContant.objects.none()
+		return obj
 
 
-class QualificationView(ListView):
+class QualificationView(LoginRequiredMixin, ListView):
 	model = QualificationCategory
 	template_name = 'qualification.html'
 
@@ -91,23 +70,32 @@ class QualificationView(ListView):
 		return ctx
 
 
-class QualificationDetailView(DetailView):
+class QualificationAddView(LoginRequiredMixin, CreateView):
 	model = Qualification
-	template_name = 'qualification_detail.html'
+	form_class = QualificationForm
+	template_name = 'qualification_add.html'
+	success_url = reverse_lazy('qualifications')
 
 
-class QualificationCreateView(CreateView):
+class QualificationDetailView(LoginRequiredMixin, DetailView):
+	model = Qualification
+	template_name = 'qualification_detail_modal.html'
+
+
+class QualificationUpdateView(LoginRequiredMixin, UpdateView):
 	model = Qualification
 	form_class = QualificationForm
 	success_url = reverse_lazy('qualifications')
-	template_name = 'qualification_form.html'
-
-	def form_valid(self, form):
-		print("im here")
-		return super().form_valid(form)
+	template_name = 'qualification_add.html'
 
 
-class TestimonialView(FormView):
+class QualificationDeleteView(LoginRequiredMixin, DeleteView):
+	model = Qualification
+	success_url = reverse_lazy('qualifications')
+	template_name = 'qualification_delete.html'
+
+
+class TestimonialView(LoginRequiredMixin, FormView):
 	template_name = 'testimonial.html'
 	form_class = TestimonialForm
 

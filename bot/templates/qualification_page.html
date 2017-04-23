@@ -1,55 +1,57 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block stylesheet %}
 
- <style>
- 	
+<style>
+    
 
 /* this is the bit that gives the border color */
 div.list-category h3.title{
-	display: block;
-	padding: 14px 0 15px 0;
-	font-size: 20px;
-	font-weight: 100;
-	margin-bottom: 0px;
-	border-bottom: 1px solid;
+    display: block;
+    padding: 14px 0 15px 0;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 0px;
+    border-bottom: 1px solid;
 }
 
 div.list-category span.list-footer{
-	display: block;
-	padding: 14px 0 15px 0;
-	font-size: 20px;
-	font-weight: 100;
-	margin-bottom: 0px;
-	border-bottom: 1px solid;
+    display: block;
+    padding: 14px 0 15px 0;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 0px;
+    border-bottom: 1px solid;
 }
 
 /* removes the border at the top of the list so it doesnt cover up the border above */
 div.list-category a.list-group-item:first-child{
-	border-top: 0;
+    border-top: 0;
 }
 
 div.list-category .list-footer{
-	margin-top:-15px;
+    margin-top:-15px;
 }
 
 div.list-category a.list-group-item {
-	border-left: 0;
-	border-right: 0;
-	border-radius: 0;
-	border-bottom: 1px solid #E0E4E9;
-	color: #4c4c4c; 
-	text-decoration: none;
-	padding-left: 0;
-	padding-right: 0;
-	overflow: hidden;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #E0E4E9;
+    color: #4c4c4c; 
+    text-decoration: none;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
 }
 
 .truncate {
-	width: 80%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
  </style>
@@ -59,114 +61,116 @@ div.list-category a.list-group-item {
 {% block nav_qualification %}active b-b{% endblock %}
 
 {% block primary_container %}
-	 
+
+
+<section class="search_section" id="search">
+    <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" class="img-fluid" height="50%">
+    <div class="container">
+        <div class="row">
+            {# search box #}
+            <div class="col-md-6 col-md-offset-2" style="position: absolute; z-index: 101; top: 180px; text-align: center;">
+                
+                {# search bar #}
+                {% include 'landing_page/search.html' %}
+                    
+                {# free skill assessment #}
+                <div class="col-md-12 col-xs-12 col-sm 12 no-padding b inline-block bg-white rounded-0 row mt-15">
+                    <div class="col-md-3 p-30">
+                        <img src="{% static 'images/icons/checklist.png' %}" alt="Free Skill Assessment">
+                    </div>
+                    <div class="col-md-9 p-30 text-white" style="background-color: #00C347; text-align: left;">
+                        <h4 class="text-white no-margin">Lorem ipsum dolor sit amet</h4>
+                        <p class="p-v-lg no-margin">A card is a flexible and extensible content container.</p>
+                        <a href="{% url 'skill_asessment' %}" class="btn btn-primary btn-outline btn-lg">
+                            FREE SKILL ASSESSMENT
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="qualification-container" style="margin-top: 40px;">
+    
 <div class="container">
-	<div class="row"> 	
-		<div class="col-md-6 list-category text-primary">
-			<h3 class="title">
-			    Business, Management and finance
-                <a href="#" class="btn btn-xs btn-primary pull-right">20 Courses</a>
-			</h3>
-			<div class="list-group">
-				<a href="#" class="list-group-item">BSB20115- Certificate II in Business</a>
-				<a href="#" class="list-group-item">BSB30115- Certificate III in Business</a>
-				<a href="#" class="list-group-item">BSB30415- Certificate III in Business Administration</a>
-				<a href="#" class="list-group-item">Option Four - Primary</a>
-				<a href="#" class="list-group-item">Option Five - Primary</a>
-			</div>
-		</div>
-
-		<div class="col-md-6 list-category text-danger">
-		
-			<h3 class="title">
-				Retail Service
-                <a href="#" class="btn btn-xs btn-danger pull-right">3 Courses</a>
-			</h3>
-	 
-			<div class="list-group">
-				<a href="#" class="list-group-item">SIR20212- Certificate II in Retail Services</a>
-				<a href="#" class="list-group-item">SIR30212- Certificate III in Retail Operations</a>
-				<a href="#" class="list-group-item">SIR50112- Diploma of Retail Management</a>
-			</div>
-			<hr>
-		</div>
-	</div>
-		
-	
-	<div class="row"> 	
-
-		<div class="col-md-6 list-category text-info">
-		
-			<h3 class="title">
-				Travel, Tourism and Hospitality
-				<a class="btn btn-xs btn-info pull-right">10 Courses</a>
-			</h3>
-	 
-			<div class="list-group">
-				<a href="#" class="list-group-item">SIT20213- Certificate II in Hospitality</a>
-				<a href="#" class="list-group-item">SIT20312- Certificate II in Kitchen Operations</a>
-				<a href="#" class="list-group-item">SIT20316- Certificate II in Hospitality</a>
-				<a href="#" class="list-group-item">SIT20416- Certificate II in Kitchen Operations</a>
-				<a href="#" class="list-group-item">SIT30616- Certificate III in Hospitality</a>
-				<a href="#" class="list-group-item">SIT30816- Certificate III in Commercial Cookery</a>
-				<a href="#" class="list-group-item">SIT40516- Certificate IV in Commercial Cookery</a>
-				<a href="#" class="list-group-item">SIT50313- Diploma of Hospitality</a>
-				<a href="#" class="list-group-item">SIT50416- Diploma of Hospitality Management</a>
-				<a href="#" class="list-group-item">SIT60316- Advanced Diploma of Hospitality Management</a>
-			</div>
-		</div>
-
-		<div class="col-md-6 list-category text-success">
-		
-			<h3 class="title ">
-				Childcare and Community Services
-				<a class="btn btn-xs btn-success pull-right">10 Courses</a>
-			</h3>
-	 
-			<div class="list-group">
-				<a href="#" class="list-group-item">HC30113- Certificate III in Early Childhood Education and Care</a>
-				<a href="#" class="list-group-item">CHC40113- Certificate IV in School Age Education and Care</a>
-				<a href="#" class="list-group-item">CHC40213- Certificate IV in Education Support</a>
-				<a href="#" class="list-group-item">CHC50113- Diploma of Early Childhood Education and Care</a>
-				<a href="#" class="list-group-item">CHC50213- Diploma of School Age Education and Care</a>
-			</div>
-		</div>
-		
-	</div>
-    <div class="row"> 	
-
-		<div class="col-md-6 list-category text-warning">
-		
-			<h3 class="title">
-				Training and Education Training
-				<a class="btn btn-xs btn-warning pull-right">10 Courses</a>
-			</h3>
-	 
-			<div class="list-group">
-				<a href="#" class="list-group-item">TAE40110- Certificate IV in Training and Assessment</a>
-				<a href="#" class="list-group-item">TAE50111- Diploma of Vocational Education and Training </a>
-			</div>
-			<hr>
-		</div>
-
-		<div class="col-md-6 list-category text-default">
-		
-			<h3 class="title ">
-				Creative Arts and Culture Training
-				<a class="btn btn-xs btn-info pull-right">10 Courses</a>
-			</h3>
-	 
-			<div class="list-group">
-				<a href="#" class="list-group-item">CUA20715- Certificate II in Visual Arts</a>
-				<a href="#" class="list-group-item">CUA31115- Certificate III in Visual Arts</a>
-			</div>
-			<hr>
-		</div>
-	</div>
-</div>
+    {% for object in object_list %}
+        {% if forloop.first %}<div class="row">{% endif %}
+        {% with object.qualification_set.all as qualifications %}
+            {% if qualifications %}
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="title">
+                                {{ object.name }}
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                        {% for obj in qualifications %}
+                            <p class="courses">
+                                <a href="{% url 'qualification_detail_page' obj.id %}" class="">{{ obj.name }}</a>
+                            </p>
+                        {% endfor %}
+                        </div>
+                        {% if qualifications.count > 5 %}
+                            <div class="panel-footer">
+                                <a href="javascript:;" class="more_less" id="more_{{ object.id }}" data-type="more" data-value="{{ object.id }}">View all</a>
+                                <a href="javascript:;" class="more_less" id="less_{{ object.id }}" data-type="less" data-value="{{ object.id }}"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="">
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% if forloop.counter|divisibleby:2 %}</div><div class="row">{% endif %}
+        {% if forloop.last %}</div>{% endif %}  
+    {% endfor %}
+</div m-v-lg>
+</section>
 
 {% endblock primary_container %}
 
 {% block javascript %}
-	
+{{ block.super }}
+    <script>
+
+    $(document).ready(function(){
+        applyMoreLessLink();
+    })
+    function applyMoreLessLink(){
+        // initialize 5 elements to be shown
+        var x = 5;
+        // the total size of elements on the selector
+        var sel_size = $(".courses").size();
+        console.log(sel_size);
+        // show only defined size of elements
+        $(".courses:lt("+x+")").show();
+        // if selected size is greater than defined size
+        // append More on moreless link
+        var less_el = $("#"+selector+" #less");
+        var more_el = $("#"+selector+" #more");
+        if(sel_size > x){
+            $(less_el).html("");
+            $(more_el).html("More");
+        }
+        // // find which element clicked under what category
+        // var moreless = $("#"+selector+ " .more_less");
+        // $(moreless).click(function(){
+        //     // get data-source to determine if more or less
+        //     var source = $(this).data('value');
+        //     if (source == 'more'){
+        //         $("#"+selector+" .mylists").show();
+        //         $("#"+selector+" #more").html("");
+        //         $("#"+selector+" #less").html("Less");
+        //     }else{
+        //         $("#"+selector+" .mylists").hide();
+        //         $("#"+selector+" .mylists:lt("+x+")").show();
+        //         $("#"+selector+" #less").html("");
+        //         $("#"+selector+" #more").html("More");
+        //     }
+        // })
+    }
+    </script>
 {% endblock javascript %}

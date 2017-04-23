@@ -30,6 +30,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_URL = 'cp_auth'
+
+LOGIN_REDIRECT_URL = 'cpanel_dashboard'
+LOGOUT_REDIRECT_URL = 'base_view'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +54,7 @@ INSTALLED_APPS = [
     'redactor',
     'dal',
     'dal_select2',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [

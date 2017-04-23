@@ -37,15 +37,28 @@ class FileUploadForm(forms.Form):
 
 
 class SkillAsessmentForm(forms.ModelForm):
-    confirm_email = forms.CharField(widget=forms.EmailInput())
+    confirm_email = forms.CharField(widget=forms.EmailInput(
+        attrs={'placeholder': ''}))
 
-    qualification = forms.ModelChoiceField(
-        queryset=Qualification.objects.all(),
-        widget=autocomplete.ModelSelect2(url='autocomplete:qualification_autocomplete')
+    qualification = forms.ChoiceField(
+        choices=(
+            ('', ''),
+            ('1', 'Certificate III in Business'),
+            ('2', 'Certificate III in Business Administration'),
+            ('3', 'Certificate II in Retail Services'),
+            ('4', 'Certificate III in Retail Operations'),
+            ('5', 'Others')),
+        widget=forms.Select(attrs={'width': '100%'})
+        # queryset=Qualification.objects.all()
     )
     experience_location = forms.ChoiceField(
         choices = EXPERIENCE_LOCATION,
+        label='',
         widget=forms.RadioSelect)
+    formal_qualification = forms.ChoiceField(
+        choices=((1, 'Yes'), (0, 'No')),
+        label='',
+        widget=forms.CheckboxInput)
 
     class Meta:
         model = SkillAsessmentUser
@@ -56,33 +69,24 @@ class SkillAsessmentForm(forms.ModelForm):
             'state', 'comments'
         ]
         widgets = {
-            'skills': autocomplete.ModelSelect2Multiple(
-                url='autocomplete:skills_autocomplete'),
-            'comments': forms.Textarea(attrs={'cols': 79, 'rows': 5})
-        }
+            'name': forms.TextInput(attrs={'placeholder': ''}),
+            'phone': forms.TextInput(attrs={'placeholder': ''}),
+            'email': forms.EmailInput(attrs={'placeholder': ''}),
+            'qualification_other': forms.TextInput(attrs={'placeholder': ''}),
+            'skills': forms.TextInput(attrs={'placeholder': ''}),
+            'experience_year': forms.TextInput(attrs={'placeholder': ''}),
+            'experience_month': forms.TextInput(attrs={'placeholder': ''}),
+            # 'formal_qualification': forms.CheckboxInput(attrs={'label': ''}),
+            'formal_details': forms.Textarea(attrs={'cols': 79, 'rows': 5, 'placeholder': ''}),
+            'state': forms.TextInput(attrs={'placeholder': ''}),
+            'comments': forms.Textarea(attrs={'cols': 79, 'rows': 5, 'placeholder': ''})
+        }    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.form_tag = False
-        self.helper.help_text_inline = True
-        # self.helper.form_class = 'form-horizontal'
-        self.helper.field_class = 'form-group'
-        self.helper.field_template = 'bootstrap4/layout/horizontal_form.html'
-        self.fields['name'].width = '100'
-        self.fields['name'].label = 'Your Full Name'
-        self.fields['qualification'].label = ""
-        self.fields['qualification_other'].required = False
-        self.fields['skills'].label = ''
-        self.fields['skills'].required = False
-        self.fields['experience_year'].required = False
-        self.fields['experience_month'].required = False
-        self.fields['comments'].required = False
-        self.fields['experience_location'].label = ''
-        self.fields['formal_qualification'].label = ''
-        self.fields['formal_details'].label = 'Details about your formal qualifications'
-        self.fields['state'].label = ''
-        self.fields['comments'].label = 'Any messages ?'
+        self.fields['qualification_other'].required=False
+        self.fields['formal_details'].required=False
+        self.fields['comments'].required=False
 
 
 class NewspaperSignUp(forms.ModelForm):
@@ -95,3 +99,11 @@ class NewspaperSignUp(forms.ModelForm):
                 'class': 'form-control input-lg',
                 'placeholder': 'Your Email Address'})
         }
+
+
+class QualificationSearchForm(forms.Form):
+
+    search = forms.ModelChoiceField(
+        queryset=Qualification.objects.all(),
+        empty_label='Enter the course you want to study',
+        widget=forms.Select(attrs={'class': 'input-lg'}))

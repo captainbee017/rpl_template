@@ -1,0 +1,37 @@
+<div class="modal-header"> 
+  		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4>{{ object.code }}-{{ object.name }}</h4>
+</div> 
+<div class="modal-body">
+	<div class="col-md-12 b-b">
+		<strong>Course description</strong>
+	</div>
+	<div class="col-md-12">
+		{{ object.description|safe }}
+	</div>
+	<div class="col-md-12 b-b">
+		<strong>Potential Job Roles</strong>
+	</div>
+	<div class="col-md-12">
+		{{ object.job_roles|safe }}
+	</div>
+	<div class="col-md-12 b-b">
+		<strong>Course Fees and Payment options</strong>
+	</div>
+	<div class="col-md-12">
+		<p>{{ object.fees|safe }}</p>
+	</div>
+	<div class="col-md-12 b-b">
+		<strong>Qualification Packaging Rules</strong>
+	</div>
+	<div class="col-md-12">
+		{{ object.packaging_rule|safe }}
+	</div>
+	<div class="clearfix"></div>
+	<div class="modal-footer p text-center">
+		<a href="{% url 'qualification_edit' object.id %}" class="btn btn-info">EDIT</a>
+	</div>
+
+</div>

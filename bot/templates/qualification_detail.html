@@ -11,49 +11,50 @@
 {% block nav_qualification %}active b-b{% endblock %}
 
 {% block primary_container %}
-<section class="search_section" id="search">
-    <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" height="30%" class="img-fluid">
+<section class="search_section" id="search" style="background-color: #009688">
+    {# <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" height="30%" class="img-fluid"> #}
     <div class="container">
-        <div class="row">
-            {# search box #}
-            <div class="" style="position: absolute; z-index: 101; top: 155px; text-align: center;">
-                <h1><strong>
-                    <p>CERTIFICATE III IN BUSINESS ADMINISTRATION</p>
-                </strong></h1>
-            </div>
-        </div>
+        <h2><strong>
+            <p>{{ object.name }}</p>
+        </strong></h2>
     </div>
 </section>
 
 <section class="details">
 	<div class="container">
-		<div class="col-md-8" style="background-color: white;">
-			<h3>Course Description</h3><hr>
-			<p>
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-			</p>
-			<h3>Potential Job Roles</h3><hr>
-			<ul class="unstyled">
-				<li>Nullam dictum felis eu pede mollis pretium.</li>
-				<li>Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-				<li>Aenean commodo ligula eget dolor. Aenean massa.</li>
-			</ul>
-			<h3>Study Pathways</h3><hr>
-			<ul class="unstyled">
-				<li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-			</ul>
-			<h3>Course Fees and payment Option</h3><hr>
-			<p>
-				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			</p>
-			<h3>Qualification Packaging Rules</h3><hr>
-			<p>
-				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-			</p>
-			<h3>How it Works?</h3><hr>
-			<p>
-				Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-			</p>
+		<div class="col-md-8" style="padding-left: 0px !important">
+			<div class="panel">
+				<div class="panel-body">
+					{% if object.description %}
+						<h3>Course Description</h3><hr>
+						<p>{{ object.description|safe}}</p>
+					{% endif %}
+					
+					{% if object.job_roles %}
+						<h3>Potential Job Roles</h3><hr>
+						{{ object.job_roles|safe }}
+					{% endif %}	
+
+					{% if object.pathways %}
+						<h3>Study Pathways</h3><hr>
+						{{ object.pathways|safe }}
+					{% endif %}
+					{% if object.fees %}
+						<h3>Course Fees and payment Option</h3><hr>
+						{{ object.fees|safe }}
+					{% endif %}
+					
+					{% if object.packaging_rule %}
+						<h3>Qualification Packaging Rules</h3><hr>
+						{{ object.packaging_rule}}
+					{% endif %}
+					
+					{% if object.how_it_works %}
+						<h3>How it Works?</h3><hr>
+						{{ object.how_it_works }}
+					{% endif %}
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="form-group" style="margin: 20px 0;">

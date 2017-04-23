@@ -3,148 +3,209 @@
 {% load crispy_forms_tags staticfiles %}
 {% block styles %}
     <link rel="stylesheet" href="{% static "css/bootstrap-switch.css" %}">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/float-label-css/v1.0.2/dist/float-label.min.css"/>
+
+    {# <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v3.0.0/dist/bootstrap-float-label.min.css"/> #}
+    <style>
+        .bootstrap-switch { height: 1.7em }
+
+    	input {
+    		width: 100% !important;
+    	}
+    </style>
 {% endblock styles %}
 
 {% block nav_rpl_skill_recognition %}b-b active{% endblock %}
 
 {% block primary_container %}
 
-<style>
-    .bootstrap-switch { height: 1.7em }
 
-	input {
-		width: 100% !important;
-	}
-</style>
+<section class="search_section" id="search" style="background-color: #009688">
+    {# <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" height="30%" class="img-fluid"> #}
+    <div class="container white">
+        <h2><strong>
+            <p>FREE SKILL ASSESSSMENT</p>
+        </strong></h2>
+    </div>
+</section>
 
 <div class="container">
-	
-	<div class="mt-3">
-		<div class="text-center b-b">
-			<h3>Free Skill Assessment</h3>
-		</div>
-
-		<form action="{% url 'skill_asessment' %}" method="POST" novalidate class="no-margin">{% csrf_token %}
+        <form action="{% url 'skill_asessment' %}" method="POST" novalidate class="no-margin">{% csrf_token %}
             <div class="col-md-9 offset-md-2 p-v-lg">
-                <div class="form-group">
+            	<div class="panel">
+                    <div class="panel-body">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form.name|as_crispy_field }}
+                            <label class="has-float-label col-md-12 no-padding">
+                                {{ form.name }}
+                                <span class="">Your Full Name Here</span>
+                            </label>
                         </div>
                         <div class="col-md-6">
-                            {{ form.phone|as_crispy_field }}
+                            <label class="has-float-label col-md-12 no-padding">
+                                {{ form.phone }}
+                                <span class="">Your Contact Number</span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form.email|as_crispy_field }}
+                            <label class="has-float-label col-md-12 no-padding">
+                                {{ form.email }}
+                                <span class="">Your Email address</span>
+                            </label>
                         </div>
 
                         <div class="col-md-6">
-                            {{ form.confirm_email|as_crispy_field }}
+                            <label class="has-float-label col-md-12 no-padding">
+                                {{ form.confirm_email }}
+                                <span class="">Confirm Your Email Address</span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="control-label">Qualification you're looking for</label>
+                            <label for="" class="control-label font-21 " style="opacity: 0.5 !important;">Qualifications you're looking for</label>
                         </div>
                         <div class="col-md-6">
-                            {{ form.qualification|as_crispy_field }}
+                            <label for="" class="has-float-label col-md-12 no-padding">
+                                {{ form.qualification }}
+                                <span class=""></span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" style="display: none;">
+                <div class="form-group m-v-lg p-v-lg qualification_other" style="display: none;">
                     <div class="row">
-                        <div class="col-md-8">
-                            {{ form.qualification_other|as_crispy_field }}
+                        <div class="col-md-12">
+                            <label for="" class="has-float-label">
+                                {{ form.qualification_other }}
+                                <span class="">Qualification others</span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="" class="control-label">What are your skills?</label>
-                        </div>
-                        <div class="col-md-6">
-                            {{ form.skills|as_crispy_field }}
+                        <div class="col-md-12">
+                            <label for="" class="has-float-label">
+                                {{ form.skills }}
+                                <span class="">What are your skills ?</span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form.experience_year|as_crispy_field }}
+                            <label for="" class="has-float-label">
+                                {{ form.experience_year }}
+                                <span class="">Experience Year</span>
+                            </label>
                         </div>
                         <div class="col-md-6">
-                            {{ form.experience_month|as_crispy_field }}
+                            <label for="" class="has-float-label">
+                                {{ form.experience_month }}
+                                <span class="">Experience Month</span>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="" class="control-label">Where did you study that?</label>
+                            <label for="" class="control-label font-21" style="opacity: 0.5 !important;">Where did you study that?</label>
                         </div>
                         <div class="col-md-6">
                             {{ form.experience_location|as_crispy_field }}
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg">
                     <div class="row">
                         <div class="col-md-7">
-                            <label for="" class="control-label">Do you have any formal qualifications</label>
+                            <label for="" class="control-label font-21" style="opacity: 0.5 !important;">Do you have any formal qualifications</label>
                         </div>
                         <div class="col-md-5">
                             <div class="float-xs-right">
-                                {{ form.formal_qualification|as_crispy_field }}
+                                {{ form.formal_qualification }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group" style="display: none;">
-                    <div class="row">
-                        <div class="col-md-9">
-                            {{ form.formal_details|as_crispy_field }}
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <label for="" class="control-label">Where you from?</label>
-                        </div>
-                        <div class="col-md-5">
-                            {{ form.state|as_crispy_field }}
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
+                <div class="form-group m-v-lg p-v-lg formal_details" style="display: none;">
                     <div class="row">
                         <div class="col-md-12">
-                            {{ form.comments|as_crispy_field }}
+                            <label for="" class="has-float-label">
+                                {{ form.formal_details }}
+                                <span class="">Provide the details</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-v-lg p-v-lg">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="" class="has-float-label">
+                                {{ form.state }}
+                                <span class="">Where are you From?</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-v-lg p-v-lg">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="" class="has-float-label">
+                                {{ form.comments }}
+                                <span class="">Any Messages?</span>
+                                
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="text-center b-t p-v-lg">
+            <div class="text-center p-v-lg">
                 <button class="btn btn-outline-primary" type="submit" style="border-radius: 0px !important;">Submit</button>
                 <button class="btn btn-outline-secondary" type="cancel" style="border-radius: 0px !important;">Cancel</button>
             </div>
         </form>
+        </div>
 	</div>
 </div>
 {% endblock primary_container %}
 {% block javascript %}
 <script src="{% static "js/bootstrap-switch.js" %}"></script>
+
 <script>
     $.fn.bootstrapSwitch.defaults.size = 'mini';
     $("[type='checkbox']").bootstrapSwitch();
+
+    // toggle qualification input
+    $("#id_qualification").on('change', function(){
+        var value = $(this).val();
+        if (value==5){
+            $('.qualification_other').show();
+        }else{
+            $('.qualification_other').hide();
+        }
+    })
+
+    // toggle switch input
+    $('#id_formal_qualification').on('switchChange.bootstrapSwitch', function (event, state) {
+        if (state){
+            $(".formal_details").show();
+        }else{
+            $(".formal_details").hide();
+        }
+    }); 
+
 </script>
 </script>
 {{ form.media }}

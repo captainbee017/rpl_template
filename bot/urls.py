@@ -18,14 +18,15 @@ from bot.autocomplete import (
 urlpatterns = (
 	url(r'^$', LandingPageView.as_view(), name='base_view'),
 
-	url(r'^qualification/search/$',
-		QualificationSearch.as_view(), name='qualification_search'),
-
 	url(r'^qualification/$',
 		QualificationView.as_view(), name='qualification_page'),
 
-	url(r'^qualification/detail/$',
-		QualificationDetailView.as_view(), name='qualification_detail'),
+	url(r'^qualification/search/$',
+		QualificationSearch.as_view(), name='qualification_search'),
+
+
+	url(r'^qualification/detail/(?P<pk>\d+)/$',
+		QualificationDetailView.as_view(), name='qualification_detail_page'),
 
 	url(r'^skill-asessment/$',
 		SkillAsessment.as_view(), name='skill_asessment'),

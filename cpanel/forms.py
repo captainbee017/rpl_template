@@ -1,28 +1,8 @@
 from django import forms
-from bot.models import EmailContent, Qualification, NewslettterRequest, Testimonial
+from bot.models import EmailContent, Qualification, NewslettterRequest, Testimonial, QualificationCategory
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
-
-class CpLoginForm(forms.ModelForm):
-
-	password = forms.CharField(widget=forms.PasswordInput())
-
-	class Meta:
-		model = User
-		fields = ('email', 'password')
-
-	def clean(self):
-		try:
-			attempt = User.objects.get(
-				email=self.cleaned_data['email'])
-			password = self.cleaned_data['password']
-			if not attempt.check_password(password):
-				raise forms.ValidationError('Incorrect password')
-		except User.DoesNotExist:
-			raise forms.ValidationError('That email is not authorized')
-		return self.cleaned_data
 
 
 class AutoResponderForm(forms.ModelForm):
@@ -37,12 +17,22 @@ class AutoResponderForm(forms.ModelForm):
 
 
 class QualificationForm(forms.ModelForm):
+	category = forms.ModelChoiceField(
+		queryset=QualificationCategory.objects.all())
 
 	class Meta:
 		model = Qualification
 		fields = [
 			'category', 'code', 'name', 'description', 'job_roles', 'fees',
 			'packaging_rule']
+
+
+	def __init__(self, *args, **kwargs):
+	    super().__init__(*args, **kwargs)
+	    self.fields['description'].label = ''
+	    self.fields['job_roles'].label = ''
+	    self.fields['fees'].label = ''
+	    self.fields['packaging_rule'].label = ''
 
 
 
@@ -55,6 +45,3 @@ class TestimonialForm(forms.ModelForm):
 			'name': forms.TextInput(attrs={'placeholder': 'Name'}),
 			'designation': forms.TextInput(attrs={'placeholder': 'Designation'})
 		}
-
-	# def save(self):
-	# 	self.save()

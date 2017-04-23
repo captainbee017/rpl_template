@@ -1,29 +1,14 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, DetailView, ListView
 from django.core.urlresolvers import reverse
 import dropbox
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 
-# from bot.forms import FileUploadForm
-from bot.forms import NewspaperSignUp
-from cpanel.forms import CpLoginForm
+from bot.forms import NewspaperSignUp, QualificationSearchForm
 from django.contrib import messages
-from bot.models import NewslettterRequest
+from bot.models import NewslettterRequest, Qualification, QualificationCategory
 
-
-# Create your views here.
-
-
-class CpLoginView(FormView):
-	form_class = CpLoginForm
-	template_name = 'cp/cp_auth.html'
-
-	def post(self, request, *args, **kwargs):
-		return super().post(request, *args, **kwargs)
-
-	def get_success_url(self):
-		return reverse('cpanel_dashboard')
 
 
 class LandingPageView(FormView):
@@ -37,16 +22,29 @@ class LandingPageView(FormView):
 	def form_valid(self, form):
 		NewslettterRequest.objects.create(
 			email=form.cleaned_data.get('email'))
-		# form.save_to_dropbox()
 		messages.success(self.request, "Thanks for Signing up")
 		return super().form_valid(form)
 
+	def get_context_data(self, *args, **kwargs):
+		ctx = super().get_context_data(*args, **kwargs)
+		ctx['search_form'] = QualificationSearchForm
+		ctx['popular_courses'] = self.get_popular_courses()
+		return ctx
 
-class QualificationView(TemplateView):
+	def get_popular_courses(self):
+		objects = Qualification.objects.filter(
+			description__isnull=False).order_by('search_count')[:4]
+		return objects
+
+
+
+class QualificationView(ListView):
+	model = QualificationCategory
 	template_name = 'qualification_page.html'
 
 
-class QualificationDetailView(TemplateView):
+class QualificationDetailView(DetailView):
+	model = Qualification
 	template_name = 'qualification_detail.html'
 
 

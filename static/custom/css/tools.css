@@ -7,6 +7,44 @@ header {
 	background-color: #F3F7FD !important;
 }
 
+.top-navbar .nav-item a:hover, 
+.top-navbar .nav-item a:focus {
+  background-color: transparent;
+  color: #999999;
+}
+
+.top-header {
+	background-color: #F3F7FD;
+}
+
+.top-navbar>ul, li {
+	height: 40px;
+}
+
+.top-header>a{
+	color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.search_section h1, h2{
+	color: #fafafa;
+}
+
+
+.skill-assessment-fonts {
+	font-size: 14px !important;
+	opacity: 0.5 !important;
+}
+
+/*font sizes*/
+.font-14 {
+	font-size: 14px !important;
+}
+
+.font-21 {
+	font-size: 21px !important;
+}
+
+
 /*buttons*/
 .btn-outline {
     background-color: transparent;

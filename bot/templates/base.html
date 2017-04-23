@@ -2,28 +2,13 @@
 <html>
     <head>
         <title>RPL Finder</title>
-        {% comment %}
-            
-        <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
-        {% endcomment %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <link rel="stylesheet" href="{% static 'typeahead/typeaheadjs.css' %}">
         <link rel="stylesheet" href="{% static "custom/css/color.css" %}">
         <link rel="stylesheet" href="{% static "custom/css/tools.css" %}">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
-        {# <link rel="stylesheet" href="{% static 'js/typeahead/jquery.typeahead.css' %}"> #}
-        {# <link rel="stylesheet" href="{% static 'custom/css/testimonial.css' %}"> #}
         <style>
-            article {
-                margin: 0;
-                padding: 0;
-                border: 0;
-                font-size: 100%;
-                font: inherit;
-                vertical-align: baseline;
-            }
-
             #qualification_form .typeahead {
                 padding: 5px 10px;
             }
@@ -71,6 +56,9 @@
                 margin: 0 auto;
                 border-radius: 100px;
             }
+            .tt-menu .tt-open{
+                width: 100%;
+            }
         </style>
         {% block styles %}
             
@@ -85,7 +73,7 @@
                         {% if messages %}
                             {% for msg in messages %}
                                 <li class="nav-item">
-                                    <a href="" class="nav-link alert alert-success">{{ msg }}</a>
+                                    <a href="" class="alert alert-success">{{ msg }}</a>
                                 </li>
                             {% endfor %}
                         {% endif %}
@@ -124,7 +112,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{% url 'base_view' %}">
                             <img id="cd-logo" class="logo is-hidden slide-in" src="{% static "images/logo/rpl.png" %}" alt="RPL Finder" width="75%">
                         </a>
                     </div>
@@ -133,10 +121,10 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right" style="margin-top:12px;">
                             <li class="nav-item {% block nav_qualification %}{% endblock %}">
-                                <a href="" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">QUALIFICATIONS</a>
+                                <a href="{% url 'qualification_page' %}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">QUALIFICATIONS</a>
                             </li>
                             <li class="nav-item {% block nav_rpl_skill_recognition %}{% endblock %}">
-                                <a href="" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">RPL & SKILL RECOGNITION</a>
+                                <a href="{% url 'skill_asessment' %}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">RPL & SKILL RECOGNITION</a>
                             </li>
                             {% comment %}
                                 
@@ -145,7 +133,7 @@
                             </li>
                             {% endcomment %}
                             <li class="nav-item {% block nav_contact %}{% endblock %}">
-                                <a href="" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">CONTACT US</a>
+                                <a href="{% url 'contact_us_page' %}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">CONTACT US</a>
                             </li>
                             {% comment %}
                                 
@@ -167,7 +155,7 @@
             <div class="container">
                 <div class="row">
                     {# search box #}
-                    <div class="col-md-6 col-md-offset-3" style="position: absolute; z-index: 101; top: 155px; text-align: center;">
+                    <div class="col-md-6 col-md-offset-2" style="position: absolute; z-index: 101; top: 155px; text-align: center;">
                         <h1><strong>
                             <p>Education Needs</p> <p>Complete Solutions</p>
                         </strong></h1>
@@ -204,26 +192,13 @@
                 <div class="section-header pt-13">
                     <h3 class="section-title text-center text-xs-center"><strong>Popular Courses</strong></h3>
                 </div>
-                <div class="col-md-3">
-                    <h4>Diploma of Business</h4>
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p><a href="">Read More</a></p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Advanced Diploma of Hospitality Management</h4>
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p><a href="">Read More</a></p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Diploma of Quality Auditing</h4>
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p><a href="">Read More</a></p>
-                </div>
-                <div class="col-md-3">
-                    <h4>Diploma of Leadership and Management</h4>
-                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p><a href="">Read More</a></p>
-                </div>
+                {% for qualification in popular_courses %}
+                    <div class="col-md-3">
+                        <h4 style="height: 40px;">{{ qualification.name }}</h4>
+                        <p class="text-justify">{{ qualification.description|truncatechars:250 }}</p>
+                        <p><a href="{% url 'qualification_detail_page' qualification.id %}">Read More</a></p>
+                    </div>
+                {% endfor %}
             </div>
         </section>
 
@@ -412,29 +387,30 @@
                 </div>
             </div>
         </section>
-
-        <section id="footer_copyright">
-            <p class="text-center p-v-lg">Copyright &copy; 2017 RPL Finder. All rights reserved.</p>
+        <section id="footer_copyright" class="clearfix">
+            <p class="text-center p-v-lg no-margin">Copyright &copy; 2017 RPL Finder. All rights reserved.</p>
         </section>
 
         {% endblock footer %}
     </body>
-    {% comment %}
-    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
-    {% endcomment %}
     <script src="{% static "js/jquery.js" %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="{% static "js/tether.min.js" %}"></script>
     <script src="{% static "js/typeahead/jquery.typeahead.js" %}"></script>
+    <script src="{% static "js/selectize.min.js" %}"></script>
     <script>
         $(document).ready(function(){
-            notifyPanel = function(message, type){
-                $("#myModal").modal('show');
-            }
-            {% for message in messages %}
-                notifyPanel('{{ message }}', '{{ message.tags }}')
-            {% endfor %}
+            // notifyPanel = function(message, type){
+            //     $("#myModal").modal('show');
+            // }
+            // {% for message in messages %}
+            //     notifyPanel('{{ message }}', '{{ message.tags }}')
+            // {% endfor %}
+
+            $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert-success").slideUp(500);
+            });
 
 
             $(".list-group-item li").hover(function () {
@@ -445,130 +421,28 @@
                 console.log('white background');
                 $(this,".list-group-item").css('background-color','white');
             });
-        })
 
+            $('#id_search').selectize({
+                valueField: 'id',
+                labelField: 'text',
+                searchField: 'text',
+                load: function(query, callback){
+                    $.ajax({
+                        url: '{% url 'qualification_populate' %}',
+                        type: 'GET',
+                        data: {'query': query},
+                        success: function(data){
+                            callback(data);
+                        }
+                    })
+                }
+            })
+        })
         var dataSource = function(request, response){
             $.get("{% url 'qualification_populate' %}", function(data){
                 response(data);
             })
         }
-
-        $('#qualification_form .typeahead').typeahead(null, {
-          name: 'best-pictures',
-          display: 'value',
-          source: dataSource,
-          templates: {
-            empty: [
-              '<div class="empty-message">',
-                'unable to find any Best Picture winners that match the current query',
-              '</div>'
-            ].join('\n'),
-            // suggestion: Handlebars.compile('<div><strong>{{value}}</strong> – {{year}}</div>')
-          }
-        });
-
-        var substringMatcher = function(strs) {
-          return function findMatches(q, cb) {
-            var matches, substringRegex;
-
-            // an array that will be populated with substring matches
-            matches = [];
-
-            // regex used to determine if a string contains the substring `q`
-            substrRegex = new RegExp(q, 'i');
-
-            // iterate through the pool of strings and for any string that
-            // contains the substring `q`, add it to the `matches` array
-            $.each(strs, function(i, str) {
-              if (substrRegex.test(str)) {
-                matches.push(str);
-              }
-            });
-
-            cb(matches);
-          };
-        };
-
-        var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-          'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-          'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-          'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-          'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-          'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-          'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-          'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-          'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        ];
-
-        // $('#qualification_form .typeahead').typeahead({
-        //   hint: true,
-        //   highlight: true,
-        //   minLength: 1
-        // },
-        // {
-        //   name: 'states',
-        //   source: substringMatcher(states)
-        // });
-
-
-        // autocomplete test
-        /**
-        * Created by Mitko on 9/8/2016.
-         */
-        // $(document).ready(function() {
-        //     var dataSource = function(request, response){
-        //         $.get("{% url 'qualification_populate' %}", function(data){
-        //             response(data);
-        //         })
-        //     }
-        //     $("#qualification_form .typeahead").typeahead(
-        //     {
-        //         hint: true,
-        //         highlight: true,
-        //         minLength: 1
-        //     },{
-        //         name: 'Qualifications',
-        //         source: substringMatcher(dataSource)
-        //     })
-
-        //     // $("#autocompleteTest").empty();
-        //     // var availableTags = [
-        //     //     "Jesse Pinkman",
-        //     //     "Walter white",
-        //     //     "Tyrion Lannister",
-        //     //     "Branden Stark",
-        //     //     "Sheldon Cooper",
-        //     //     "Karen Mccutcheon",
-        //     //     "Lourdes Newnam",
-        //     //     "Cher Gershon",
-        //     //     "Wava Hiers",
-        //     //     "Georgine Gillette",
-        //     //     "Marquetta Trotter"
-        //     // ];
-
-
-        //     // $('#searchText').autocomplete({
-        //     //     search: function(event, ui) {
-        //     //         $('#autocompleteTest').empty();
-        //     //         // $("#x").removeClass('hide')
-        //     //     },
-        //     //     close:function(){
-        //     //         if ($('#searchText').val()==''){
-        //     //             $('#autocompleteTest').empty();
-        //     //         }
-        //     //         // $("#x").addClass('hide')
-        //     //     },
-        //     //     minLength: 1,
-        //     //     source: dataSource
-        //     // })
-        //     // .data('ui-autocomplete')._renderItem = function(ul, item) {
-        //     //     return $("<div style='text-align: left !important;'>")
-        //     //         .data('ui-autocomplete-item', item)
-        //     //         .append("<li class='list-group-item'><div class='row'> <div class='col-md-12'><div>" + item.value + "</div> </div> </div> </li>")
-        //     //         .appendTo($('#autocompleteTest'));
-        //     // };
-        // });
-
     </script>
     {% block javascript %}{% endblock %}
 </html>

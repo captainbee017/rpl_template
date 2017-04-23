@@ -20,10 +20,8 @@ urlpatterns = [
     url(r'^', include('bot.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^control-panel/', include('cpanel.urls')),
-]
 
-urlpatterns += [
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += [
