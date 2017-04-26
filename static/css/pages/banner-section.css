@@ -1,0 +1,6 @@
+.banner-overflow {
+	position: absolute;
+	z-index: 101;
+	top: 155px;
+	text-align: center;
+}

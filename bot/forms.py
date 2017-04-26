@@ -3,7 +3,7 @@ from dal import autocomplete
 import dropbox
 from django.conf import settings
 from datetime import datetime, date
-from bot.models import SkillAsessmentUser, Qualification, EXPERIENCE_LOCATION, NewslettterRequest
+from bot.models import SkillAsessmentUser, Qualification, EXPERIENCE_LOCATION, NewslettterRequest, VisitorQuery
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (
@@ -96,14 +96,24 @@ class NewspaperSignUp(forms.ModelForm):
         fields = ['email']
         widgets = {
             'email': forms.TextInput(attrs={
-                'class': 'form-control input-lg',
+                'class': 'form-control input-lg rounded-0',
                 'placeholder': 'Your Email Address'})
         }
 
 
 class QualificationSearchForm(forms.Form):
 
-    search = forms.ModelChoiceField(
+    query = forms.ModelChoiceField(
         queryset=Qualification.objects.all(),
         empty_label='Enter the course you want to study',
         widget=forms.Select(attrs={'class': 'input-lg'}))
+
+
+class VisitorQueryForm(forms.ModelForm):
+
+    class Meta:
+        model = VisitorQuery
+        fields = ['name', 'email', 'phone_number', 'message']
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': 'Email'})
+        }

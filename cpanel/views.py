@@ -4,10 +4,10 @@ from django.views.generic import (
 	TemplateView, FormView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
+from bot.forms import VisitorQueryForm
 from bot.models import (
 	EmailContent, QualificationCategory, Qualification, NewslettterRequest,
-	Testimonial)
+	Testimonial, VisitorQuery)
 from cpanel.forms import AutoResponderForm, QualificationForm, TestimonialForm
 
 from django.core.urlresolvers import reverse
@@ -55,8 +55,8 @@ class AutoResponderView(LoginRequiredMixin, UpdateView):
 	def get_object(self, *args, **kwargs):
 		try:
 			obj = EmailContent.objects.get(is_active=True)
-		except EmailContant.DoesNotExist:
-			obj = EmailContant.objects.none()
+		except EmailContent.DoesNotExist:
+			obj = None
 		return obj
 
 
@@ -95,21 +95,47 @@ class QualificationDeleteView(LoginRequiredMixin, DeleteView):
 	template_name = 'qualification_delete.html'
 
 
-class TestimonialView(LoginRequiredMixin, FormView):
+class TestimonialView(LoginRequiredMixin, ListView):
+	model = Testimonial
 	template_name = 'testimonial.html'
-	form_class = TestimonialForm
 
-	def get_context_data(self, *args, **kwargs):
-		ctx = super().get_context_data(*args, **kwargs)
-		ctx['object_list'] = Testimonial.objects.all()
-		return ctx
 
-	def post(self, *args, **kwargs):
-		return super().post(*args, **kwargs)
+class TestimonialCreateView(LoginRequiredMixin, CreateView):
+	model = Testimonial
+	template_name = 'testimonial_add.html'
+	success_url = reverse_lazy('testimonials')
+	fields = ['dp', 'name', 'designation', 'message']
 
-	def form_valid(self, form):
-		form.save()
-		return super().form_valid(form)
+
+class TestimonialDeleteView(LoginRequiredMixin, DeleteView):
+	model = Testimonial
+	template_name = 'testimonial_delete.html'
+	success_url = reverse_lazy('testimonials')
+
+
+class TestimonialUpdateView(LoginRequiredMixin, UpdateView):
+	model = Testimonial
+	template_name = 'testimonial_add.html'
+	success_url = reverse_lazy('testimonials')
+	fields = ['dp', 'name', 'designation', 'message']
+
+
+	# form_class = TestimonialForm
+
+	# def post(self, *args, **kwargs):
+	# 	return super().post(*args, **kwargs)
+
+	# def form_valid(self, form):
+	# 	form.save()
+	# 	return super().form_valid(form)
+
+	# def get_success_url(self):
+	# 	return reverse('testimonials')
+
+
+class ContactUsCreateView(CreateView):
+	model = VisitorQuery
+	form_class = VisitorQueryForm
 
 	def get_success_url(self):
-		return reverse('testimonials')
+		return reverse('base_view')

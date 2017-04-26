@@ -93,7 +93,7 @@ class Testimonial(models.Model):
 	'''
 	In case we need to update testimonials
 	'''
-	dp = models.FileField(upload_to='docs/images/testimonials')
+	dp = models.ImageField(upload_to='docs/images/testimonials')
 	name = models.CharField(max_length=100)
 	designation = models.CharField(max_length=200)
 	message = RedactorField()

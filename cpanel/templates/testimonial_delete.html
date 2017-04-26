@@ -1,0 +1,16 @@
+<div class="modal-header"> 
+  		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h5>Delete testimonials from {{ object.name }} ??</h5>
+</div> 
+<div class="modal-body">
+	<p>Deleting Testimonial from {{ object.name }}, will no longer be visibile on landing page.</p>
+	<p>Do you want to continue?</p>
+</div>
+
+<div class="modal-footer p text-center">
+	<form action="{% url 'testimonials_delete' object.id %}" method="POST">{% csrf_token %}
+		<button class="btn btn-danger" type="submit">DELETE</button>
+	</form>
+</div>

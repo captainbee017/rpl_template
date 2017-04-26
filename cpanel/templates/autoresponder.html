@@ -20,7 +20,7 @@
 {% endblock autoresponder_header %}
 
 {% block container %}
-	<div class="col-md-8 offset-md-2">
+	<div class="col-md-7 offset-md-1 b-r">
 		<form action="" method="POST">{% csrf_token %}
 			<div class="col-md-12 b-b m-v no-padding">
 				<div class="form-group">
@@ -48,6 +48,13 @@
             	<button class="btn btn-outline-primary " type="submit" style="border-radius: 0px !important;">SAVE</button>
             </div>
 		</form>
+	</div>
+	<div class="col-md-4">
+		<div class="alert alert-info">
+			<p>
+				Note that the variables on the email content should be constant and be wraped around with curly braces. eg "{contact_name}". <br> Here the <i>contact_name</i> wrapped around the braces will be replaced by the contact person's Full Name and so on.			
+			</p>
+		</div>
 	</div>
 {% endblock container %}
 

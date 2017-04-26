@@ -1,8 +1,9 @@
 from django.conf.urls import include, url
 from cpanel.views import (
 	DashboardView, AutoResponderView, QualificationView, QualificationAddView,
-	TestimonialView, QualificationDetailView, 
-	QualificationUpdateView, QualificationDeleteView)
+	TestimonialView, TestimonialCreateView, TestimonialUpdateView, TestimonialDeleteView,
+	QualificationDetailView, QualificationUpdateView, QualificationDeleteView,
+	ContactUsCreateView)
 
 from bot.autocomplete import GetQualificationCategory
 
@@ -30,6 +31,15 @@ urlpatterns = [
 
 	url(r'^testimonials/$',
 		TestimonialView.as_view(), name='testimonials'),
+
+	url(r'^testimonials/add/$',
+		TestimonialCreateView.as_view(), name='testimonials_add'),
+
+	url(r'^testimonials/edit/(?P<pk>\d+)/$',
+		TestimonialUpdateView.as_view(), name='testimonials_edit'),
+
+	url(r'^testimonials/delete/(?P<pk>\d+)/$',
+		TestimonialDeleteView.as_view(), name='testimonials_delete'),
 	
 	url(r'^qualification/detail/(?P<pk>\d+)/$',
 		QualificationDetailView.as_view(), name='qualification_detail'),
@@ -45,4 +55,7 @@ urlpatterns = [
 
 	url(r'^fetch-qualification-category/$',
 		GetQualificationCategory.as_view(), name='fetch_qualification_category'),
+
+	url(r'^contact-us/$',
+		ContactUsCreateView.as_view(), name='contact_us_create'),
 ]

@@ -3,59 +3,7 @@
 {% load staticfiles %}
 
 {% block stylesheet %}
-
-<style>
-    
-
-/* this is the bit that gives the border color */
-div.list-category h3.title{
-    display: block;
-    padding: 14px 0 15px 0;
-    font-size: 20px;
-    font-weight: 100;
-    margin-bottom: 0px;
-    border-bottom: 1px solid;
-}
-
-div.list-category span.list-footer{
-    display: block;
-    padding: 14px 0 15px 0;
-    font-size: 20px;
-    font-weight: 100;
-    margin-bottom: 0px;
-    border-bottom: 1px solid;
-}
-
-/* removes the border at the top of the list so it doesnt cover up the border above */
-div.list-category a.list-group-item:first-child{
-    border-top: 0;
-}
-
-div.list-category .list-footer{
-    margin-top:-15px;
-}
-
-div.list-category a.list-group-item {
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-    border-bottom: 1px solid #E0E4E9;
-    color: #4c4c4c; 
-    text-decoration: none;
-    padding-left: 0;
-    padding-right: 0;
-    overflow: hidden;
-}
-
-.truncate {
-    width: 80%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
- </style>
-
+<link rel="stylesheet" href="{% static 'css/pages/qualification-page.css' %}">
 {% endblock stylesheet %}
 
 {% block nav_qualification %}active b-b{% endblock %}
@@ -92,42 +40,38 @@ div.list-category a.list-group-item {
 </section>
 
 <section class="qualification-container" style="margin-top: 40px;">
-    
-<div class="container">
-    {% for object in object_list %}
-        {% if forloop.first %}<div class="row">{% endif %}
-        {% with object.qualification_set.all as qualifications %}
-            {% if qualifications %}
-                <div class="col-md-6">
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h4 class="title">
-                                {{ object.name }}
-                            </h4>
-                        </div>
-                        <div class="panel-body">
-                        {% for obj in qualifications %}
-                            <p class="courses">
-                                <a href="{% url 'qualification_detail_page' obj.id %}" class="">{{ obj.name }}</a>
-                            </p>
-                        {% endfor %}
-                        </div>
-                        {% if qualifications.count > 5 %}
-                            <div class="panel-footer">
-                                <a href="javascript:;" class="more_less" id="more_{{ object.id }}" data-type="more" data-value="{{ object.id }}">View all</a>
-                                <a href="javascript:;" class="more_less" id="less_{{ object.id }}" data-type="less" data-value="{{ object.id }}"></a>
+    <div class="container">
+        {% for object in object_list %}
+            {% with object.qualification_set.all as qualifications %}
+                {% if qualifications %}
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="title">
+                                    {{ object.name }}
+                                </h4>
                             </div>
-                        {% endif %}
+                            <div class="panel-body">
+                            {% for obj in qualifications %}
+                                <p class="courses">
+                                    <a href="{% url 'qualification_detail_page' obj.id %}" class="">{{ obj.name }}</a>
+                                </p>
+                            {% endfor %}
+                            </div>
+                            {% if qualifications.count > 5 %}
+                                <div class="panel-footer">
+                                    <a href="javascript:;" class="more_less" id="more_{{ object.id }}" data-type="more" data-value="{{ object.id }}">View all</a>
+                                    <a href="javascript:;" class="more_less" id="less_{{ object.id }}" data-type="less" data-value="{{ object.id }}"></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="">
+                        </div>
                     </div>
-                    <div class="">
-                    </div>
-                </div>
-            {% endif %}
-        {% endwith %}
-        {% if forloop.counter|divisibleby:2 %}</div><div class="row">{% endif %}
-        {% if forloop.last %}</div>{% endif %}  
-    {% endfor %}
-</div m-v-lg>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div m-v-lg>
 </section>
 
 {% endblock primary_container %}

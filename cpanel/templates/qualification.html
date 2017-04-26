@@ -18,6 +18,17 @@
 		   	margin-bottom: 0;
 		    border-top: 1px solid #ddd;
 		}
+		.floating-button {
+			float:left;
+			right: 30px;
+			bottom: 30px;
+			background-color: #009688;
+			width: 75px;
+			height: 75px;
+			padding: 28px;
+			position: fixed;
+			border-radius: 45px;
+		}
 	</style>
 {% endblock stylesheet %}
 
@@ -25,15 +36,15 @@
 	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
 {% endblock dashboard_header %}
 {% block qualification_header %}
-	<div class="col-md-5"><a href="{% url 'qualifications' %}" class="float-xs-right">
+	<div class="col-md-6"><a href="{% url 'qualifications' %}" class="float-xs-right">
 		<h3>QUALIFICATIONS</h3><hr>
 	</a></div>
 {% endblock qualification_header %}
-{% block skills_header %}
+{% block testimonials_header %}
 	<div class="col-md-3"><a href="" class="float-xs-right">
 		TESTIMONIALS
 	</a></div>
-{% endblock skills_header %}
+{% endblock testimonials_header %}
 
 {% block container %}
 	{% for object in object_list %}
@@ -57,7 +68,7 @@
 	{% endfor %}
 
  	<a href="{% url 'qualification_add' %}" class="text-white">
-		<div class="rounder-corner" style="float:left;  right: 30px; bottom: 30px; background-color: #009688; width: 75px; height: 75px; padding: 25px; position: fixed; border-radius: 45px;">
+		<div class="rounder-corner floating-button">
 	   		<i class="fa fa-plus fa-fw"></i>
 		</div>
   	</a>

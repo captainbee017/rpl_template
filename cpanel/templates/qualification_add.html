@@ -2,9 +2,10 @@
 {% load staticfiles bootstrap3 %}
 
 {% block stylesheet %}
-	{# upgdare bootstrap switch #}
+	{# upgrade bootstrap switch #}
 	<link href="/static/redactor/css/redactor.css" type="text/css" media="all" rel="stylesheet" />
     <link href="/static/redactor/css/django_admin.css" type="text/css" media="all" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/selectize.bootstrap3.css' %}">
 	<style>
 		.bootstrap-switch { height: 1.7em }
 
@@ -28,16 +29,18 @@
 {% block dashboard_header %}
 	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
 {% endblock dashboard_header %}
+
 {% block qualification_header %}
-	<div class="col-md-5"><a href="{% url 'qualifications' %}" class="float-xs-right">
+	<div class="col-md-6"><a href="{% url 'qualifications' %}" class="float-xs-right">
 		<h3>QUALIFICATIONS</h3><hr>
 	</a></div>
 {% endblock qualification_header %}
-{% block skills_header %}
+
+{% block testimonials_header %}
 	<div class="col-md-3"><a href="" class="float-xs-right">
 		TESTIMONIALS
 	</a></div>
-{% endblock skills_header %}
+{% endblock testimonials_header %}
 
 {% block container %}
 	<div class="col-md-8 offset-md-2">
@@ -85,6 +88,8 @@
     		valueField: 'id',
 		    labelField: 'text',
 		    searchField: 'text',
+   			create: true,
+    		sortField: 'text',
     		create: function(query, callback){
     			$.ajax({
     				url: '{% url 'fetch_qualification_category' %}',
@@ -106,7 +111,6 @@
     				type: 'GET',
     				data: {'text': query},
     				succcess: function(res){
-    					console.log(res);
     					callback(res);
     				}
     			})

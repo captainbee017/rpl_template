@@ -1,25 +1,3 @@
-<style>
-    .selectize-control {
-        padding: 0 !important;
-    }
-    .selectize-input input {
-        width: 100% !important;
-        border: 0px !important;
-        padding: 10px 10px !important;
-    }
-    .selectize-dropdown {
-        top: 0px !important;
-        height: auto;
-        border-top-right-radius: 0px !important;
-        text-align: left;
-        z-index: 501;
-    }
-
-    .selectize-dropdown-content option {
-        padding: 5px 0 !important;
-    }
-</style>
-
 <div class="col-md-12 col-xs-12 col-sm-12 no-padding mt-1" id="qualification_form">
     <form action="{% url 'qualification_search' %}" method="GET">
         <div class="">
@@ -28,10 +6,9 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading">
                         <div class="input-group">
-                            {{ search_form.search }}
-                            {# <select name="q" class="form-control input-lg qualification_search" value="" placeholder="Enter the course you want to study"> #}
+                            {{ search_form.query }}
                             <span class="input-group-btn">
-                                <button type="submit" class="btn secondary-green input-lg" style="">SEARCH</button>
+                                <button type="submit" class="btn secondary-green input-lg rounded-0" style="">SEARCH</button>
                             </span>
                         </div>
                     </div>
@@ -41,33 +18,4 @@
     </form>
 </div>
 
-{% comment %}
-<div class="col-md-12 col-xs-12 col-sm-12 no-padding mt-1" id="qualification_form">
-    <form action="{% url 'qualification_search' %}" method="GET">
-        <div class="input-group">
-            <input type="text" name="q" class="form-control input-lg qualification_search typeahead" value="{% if query_text %}{{ query_text }}{% endif %}" placeholder="Enter the course you want to study">
-            <span class="input-group-btn">
-                <button type="submit" class="btn secondary-green input-lg" style="border-color: #818A91 !important">SEARCH</button>
-            </span>
-        </div>
-    </form>
-</div>
-{% endcomment %}
 
-<style>
-.list-group-item:hover{
-    cursor: pointer;
-}
-
-.panel>.list-group {
-    position: absolute;
-    width: 100%;
-    z-index: 201;
-}
-
-.panel>.list-group:last-child .list-group-item:last-child{
-    border-bottom: 0;
-    border-bottom-right-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
-}
-</style>

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load bootstrap3 %}
 <html>
     <head>
         <title>C-PANEL</title>
@@ -24,8 +25,8 @@
                 <div class="card">
                     <div class="card-body m-lg">
                         <form action="" method="POST">{% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-outline-success " type="submit" style="border-radius: 0px !important;">Login</button>
+                            {% bootstrap_form form %}
+                            <button class="btn btn-outline-success text-center" type="submit" style="border-radius: 0px !important;">Login</button>
                         </form>
                     </div>
                 </div>

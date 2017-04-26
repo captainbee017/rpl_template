@@ -5,7 +5,7 @@ import dropbox
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 
-from bot.forms import NewspaperSignUp, QualificationSearchForm
+from bot.forms import NewspaperSignUp, QualificationSearchForm, VisitorQueryForm
 from django.contrib import messages
 from bot.models import NewslettterRequest, Qualification, QualificationCategory
 
@@ -41,6 +41,11 @@ class LandingPageView(FormView):
 class QualificationView(ListView):
 	model = QualificationCategory
 	template_name = 'qualification_page.html'
+
+	def get_context_data(self, *args, **kwargs):
+		ctx = super().get_context_data(*args, **kwargs)
+		ctx['search_form'] = QualificationSearchForm
+		return ctx
 
 
 class QualificationDetailView(DetailView):

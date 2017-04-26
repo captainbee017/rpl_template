@@ -1,5 +1,5 @@
 {% extends "dashboard.html" %}
-{% load staticfiles crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block stylesheet %}
 	{# upgdare bootstrap switch #}
@@ -18,17 +18,32 @@
 		   	margin-bottom: 0;
 		    border-top: 1px solid #ddd;
 		}
+
+		.floating-button {
+			float:left;
+			right: 30px;
+			bottom: 30px;
+			background-color: #009688;
+			width: 75px;
+			height: 75px;
+			padding: 28px;
+			position: fixed;
+			border-radius: 45px;
+		}
+
+		.img-circle {
+			border-radius: 60%;
+			width: 110px;
+			height: 115px;
+			float: right;
+		}
 	</style>
 {% endblock stylesheet %}
 
 {% block dashboard_header %}
 	<a href="{% url 'cpanel_dashboard' %}" class="">DASHBOARD</a>
 {% endblock dashboard_header %}
-{% block qualification_header %}
-	<div class="col-md-3"><a href="{% url 'qualifications' %}" class="float-xs-right">
-		QUALIFICATIONS
-	</a></div>
-{% endblock qualification_header %}
+
 {% block testimonials_header %}
 	<div class="col-md-5"><a href="" class="float-xs-right">
 		<h3>TESTIMONIALS</h3><hr>
@@ -37,45 +52,33 @@
 
 {% block container %}
 	{% for object in object_list %}
-		<div class="col-md-8 offset-md-2">
-			<div class="m-v b-b" style="height:60px;">
-				<img src="{{ object.dp.url }}" alt="">
-				<strong>{{ object.name }}</strong><br>
-				<p>{{object.message}}</p>
+		<div class="row m-v">
+			<div class="col-md-2 offset-md-1">
+				<img src="{{ object.dp.url }}" alt="{{ object.dp }}" class="img-circle m-v">
+			</div>
+			<div class="col-md-8">
+				<div class="m-v b-b">
+					<strong>{{ object.name }}</strong><br>
+					<small>{{ object.designation }}</small>
+					<small class="pull-right">
+						<a href="{% url 'testimonials_edit' object.id %}">Edit</a> | 
+						<a data-remote="{% url 'testimonials_delete' object.id %}" data-toggle="modal" data-target="#myModal" href="">Delete</a>
+					</small>
+				</div>
+				<div class="clearfix"></div>
+				<p>{{ object.message|safe }}</p>
 			</div>
 		</div>
 	{% empty %}
-		<div class="col-md-8 offset-md-2">
-			<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-				<div class="col-md-2">
-					<div class="media-object">
-	                      <div class="box-effect">
-	                          <div class="box-effect-img"> 
-	                          <i class="fa fa user-circle fa-3x"></i>
-	                          {# <img src="{{ request.user.profile_pic }}" class="n-w-150"/> #}
-	                          </div>
-	                          <div class="box-effect-content n-w-150">
-	                          	{{ form.dp }}
-	                          	{% comment %}
-	                              <h3 class="box-effect-title p-v">
-	                                  <a class="btn btn-primary btn-sm text-white" data-target="#myModal" data-toggle="modal" data-remote="">Add Picture</a>
-	                              </h3>
-	                          	{% endcomment %}
-	                          </div>
-	                      </div>
-	                  </div>
-				</div>
-				<div class="col-md-10">
-					{{ form.name }}
-					{{ form.designation }}
-					{{ form.message }}
-				</div>
-				<div class="col-md-12 offset-md-5">
-	            	<button class="btn btn-outline-primary " type="submit" style="border-radius: 0px !important;">SAVE</button>
-	            </div>
-			</form>
-		</div>
+		<div class="clearfix"></div>
+		<div class="alert alert-info"> Nothing added untill now. Click on the button below to add testimonials</div>
 	{% endfor %}
+
+		<a href="{% url 'testimonials_add' %}" class="text-white" title="Add testimonails">
+			<div class="rounder-corner floating-button">
+		   		<i class="fa fa-plus fa-fw"></i>
+			</div>
+	  	</a>
 {% endblock container %}
 
 
