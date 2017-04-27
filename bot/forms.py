@@ -1,14 +1,10 @@
 from django import forms
-from dal import autocomplete
-import dropbox
+# from dal import autocomplete
 from django.conf import settings
-from datetime import datetime, date
-from bot.models import SkillAsessmentUser, Qualification, EXPERIENCE_LOCATION, NewslettterRequest, VisitorQuery
-
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (
-    Layout, Div, Field, HTML)
-# from bot.models import UserDetail
+from datetime import datetime
+from bot.models import (
+    SkillAsessmentUser, Qualification, EXPERIENCE_LOCATION,
+    NewslettterRequest, VisitorQuery)
 
 
 class FileUploadForm(forms.Form):
@@ -20,18 +16,18 @@ class FileUploadForm(forms.Form):
         API v2
         Generate dropbox secret key from dropbox developers account.
 
-        One directory per email.        
+        One directory per email.
         '''
-        client = dropbox.Dropbox(settings.DROPBOX_KEY)
+        # client = dropbox.Dropbox(settings.DROPBOX_KEY)
 
-        email = self.cleaned_data['user_email']
+        # email = self.cleaned_data['user_email']
 
-        obj, created = UserDetail.objects.get_or_create(email=email)
-        dir_name = obj.email
-        source_file = self.cleaned_data['upfile']
-        destination_file = '/test_dropbox/{}/{}/{}'.format(
-            dir_name, str(datetime.now()), source_file)
-        client.files_upload(source_file.read(), destination_file)
+        # obj, created = UserDetail.objects.get_or_create(email=email)
+        # dir_name = obj.email
+        # source_file = self.cleaned_data['upfile']
+        # destination_file = '/test_dropbox/{}/{}/{}'.format(
+        #     dir_name, str(datetime.now()), source_file)
+        # client.files_upload(source_file.read(), destination_file)
 
         return True
 
@@ -52,7 +48,7 @@ class SkillAsessmentForm(forms.ModelForm):
         # queryset=Qualification.objects.all()
     )
     experience_location = forms.ChoiceField(
-        choices = EXPERIENCE_LOCATION,
+        choices=EXPERIENCE_LOCATION,
         label='',
         widget=forms.RadioSelect)
     formal_qualification = forms.ChoiceField(
@@ -77,16 +73,17 @@ class SkillAsessmentForm(forms.ModelForm):
             'experience_year': forms.TextInput(attrs={'placeholder': ''}),
             'experience_month': forms.TextInput(attrs={'placeholder': ''}),
             # 'formal_qualification': forms.CheckboxInput(attrs={'label': ''}),
-            'formal_details': forms.Textarea(attrs={'cols': 79, 'rows': 5, 'placeholder': ''}),
+            'formal_details': forms.Textarea(
+                attrs={'cols': 79, 'rows': 5, 'placeholder': ''}),
             'state': forms.TextInput(attrs={'placeholder': ''}),
             'comments': forms.Textarea(attrs={'cols': 79, 'rows': 5, 'placeholder': ''})
-        }    
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['qualification_other'].required=False
-        self.fields['formal_details'].required=False
-        self.fields['comments'].required=False
+        self.fields['qualification_other'].required = False
+        self.fields['formal_details'].required = False
+        self.fields['comments'].required = False
 
 
 class NewspaperSignUp(forms.ModelForm):

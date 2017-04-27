@@ -48,12 +48,12 @@ INSTALLED_APPS = [
 
     #third party apps
     'django_extensions',
-    'crispy_forms',
+    # 'crispy_forms',
     'cpanel',
-    'rest_framework',
+    # 'rest_framework',
     'redactor',
-    'dal',
-    'dal_select2',
+    # 'dal',
+    # 'dal_select2',
     'bootstrap3',
 ]
 
