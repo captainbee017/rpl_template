@@ -389,7 +389,7 @@ header {
 }
 
 .float-contact-container {
-	position: fixed; bottom: 5px; right: 5px; z-index: 5;
+	position: fixed; bottom: 5px; right: 5px; z-index: 110;
 }
 
 .float-contact-form {

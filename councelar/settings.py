@@ -25,9 +25,9 @@ SECRET_KEY = 'v#n6p7actx!%3sc%3$8%35gr2fqv7#ww_41mjwycg55-zwvjm('
 DROPBOX_KEY = 'gqV5tUUVyqYAAAAAAAAAmNVH370mqmMzDTE12v6lOn87qssOqqPVjSQYT5Tm4_FB'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['djungbahadur.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 LOGIN_URL = 'cp_auth'
@@ -46,15 +46,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bot',
 
-    #third party apps
-    'django_extensions',
-    # 'crispy_forms',
+    # third party apps
     'cpanel',
-    # 'rest_framework',
     'redactor',
+    'bootstrap3',
+    # 'django_extensions',
+    # 'crispy_forms',
+    # 'rest_framework',
     # 'dal',
     # 'dal_select2',
-    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'councelar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'counselor',
+        'NAME': 'rpldb',
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'counselor',
         # 'USER': 'root',
@@ -157,10 +157,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
-GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
-}
+# GRAPH_MODELS = {
+#   'all_applications': True,
+#   'group_models': True,
+# }
 
 REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
