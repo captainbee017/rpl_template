@@ -25,7 +25,7 @@ SECRET_KEY = 'v#n6p7actx!%3sc%3$8%35gr2fqv7#ww_41mjwycg55-zwvjm('
 DROPBOX_KEY = 'gqV5tUUVyqYAAAAAAAAAmNVH370mqmMzDTE12v6lOn87qssOqqPVjSQYT5Tm4_FB'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['djungbahadur.pythonanywhere.com', '127.0.0.1', 'localhost']
 
@@ -82,7 +82,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
                 'bot.context_processor.contact_form'
             ],
         },
@@ -98,7 +97,7 @@ WSGI_APPLICATION = 'councelar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'rpldb',
+        'NAME': os.path.join(BASE_DIR, 'rpldb.sqlite3'),
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'counselor',
         # 'USER': 'root',
@@ -157,10 +156,10 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
-# GRAPH_MODELS = {
-#   'all_applications': True,
-#   'group_models': True,
-# }
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 
 REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'

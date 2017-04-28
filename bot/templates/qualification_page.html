@@ -70,6 +70,14 @@
                     </div>
                 {% endif %}
             {% endwith %}
+        {% empty %}
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div m-v-lg>
 </section>
@@ -99,22 +107,6 @@
             $(less_el).html("");
             $(more_el).html("More");
         }
-        // // find which element clicked under what category
-        // var moreless = $("#"+selector+ " .more_less");
-        // $(moreless).click(function(){
-        //     // get data-source to determine if more or less
-        //     var source = $(this).data('value');
-        //     if (source == 'more'){
-        //         $("#"+selector+" .mylists").show();
-        //         $("#"+selector+" #more").html("");
-        //         $("#"+selector+" #less").html("Less");
-        //     }else{
-        //         $("#"+selector+" .mylists").hide();
-        //         $("#"+selector+" .mylists:lt("+x+")").show();
-        //         $("#"+selector+" #less").html("");
-        //         $("#"+selector+" #more").html("More");
-        //     }
-        // })
     }
     </script>
 {% endblock javascript %}

@@ -13,11 +13,14 @@ class QualificationSearch(ListView):
 
     def dispatch(self, *args, **kwargs):
         query = self.request.GET.get('query')
-        obj = get_object_or_404(Qualification, id=query)
-        obj.search_count += 1
-        obj.save()
-        return HttpResponseRedirect(
-            reverse('qualification_detail_page', args=[obj.id]))
+        print(query)
+        if query:
+            obj = get_object_or_404(Qualification, id=query)
+            obj.search_count += 1
+            obj.save()
+            return HttpResponseRedirect(
+                reverse('qualification_detail_page', args=[obj.id]))
+        return super().dispatch(*args, **kwargs)
 
 
     # def get_objects(self):
