@@ -27,7 +27,7 @@ DROPBOX_KEY = 'gqV5tUUVyqYAAAAAAAAAmNVH370mqmMzDTE12v6lOn87qssOqqPVjSQYT5Tm4_FB'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['djungbahadur.pythonanywhere.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 
 
 LOGIN_URL = 'cp_auth'

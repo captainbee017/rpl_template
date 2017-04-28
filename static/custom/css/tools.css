@@ -411,3 +411,13 @@ header {
 		background-color: none !important;
 	}
 }
+
+@media screen and (min-width: 1300px){
+	.free-skill-box {
+		margin-top: 40px !important;
+	}
+
+	.banner-content>p {
+		margin-top: 40px !important;
+	}
+}
