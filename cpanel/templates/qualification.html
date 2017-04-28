@@ -1,5 +1,5 @@
 {% extends "dashboard.html" %}
-{% load staticfiles crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block stylesheet %}
 	{# upgdare bootstrap switch #}
@@ -41,7 +41,7 @@
 	</a></div>
 {% endblock qualification_header %}
 {% block testimonials_header %}
-	<div class="col-md-3"><a href="" class="float-xs-right">
+	<div class="col-md-3"><a href="{% url 'testimonials' %}" class="float-xs-right">
 		TESTIMONIALS
 	</a></div>
 {% endblock testimonials_header %}
@@ -65,6 +65,11 @@
 		</div>
 	{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
     {% if forloop.last %}</div>{% endif %}
+    {% empty %}
+    	<div class="clearfix"></div>
+    	<div class="alert alert-info">
+    		Nothing here, Click on plus button below to add
+    	</div>
 	{% endfor %}
 
  	<a href="{% url 'qualification_add' %}" class="text-white">

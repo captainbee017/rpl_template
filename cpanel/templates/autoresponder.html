@@ -1,5 +1,5 @@
 {% extends "dashboard.html" %}
-{% load staticfiles crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block stylesheet %}
 	{# upgdare bootstrap switch #}
@@ -42,7 +42,7 @@
     			</div>
 			</div>
 			<div class="form-group">
-                {{ form.body|as_crispy_field }}
+                {{ form.body }}
             </div>
             <div class="col-md-12 offset-md-5">
             	<button class="btn btn-outline-primary " type="submit" style="border-radius: 0px !important;">SAVE</button>
