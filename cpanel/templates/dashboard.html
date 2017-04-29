@@ -112,7 +112,12 @@
 					</div>
 					<div class="card-body">
 						<div style="margin: 10px 10px;">
-							Nothing to show here
+							{% if contacts %}
+								<h3><a href="">{{ contacts.count }}</a></h3>
+								<span class="small text-muted">New Queries</span>
+							{% else %}
+								Nothing to show here
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -126,7 +131,7 @@
 						<div style="margin: 10px 10px;">
 							{# toggle table and last update status #}
 							<a id="subscribe_toggle" href="#">
-								<h3>{{ subscribers|length }} </h3><span class="text-muted">new subsribers. (in last {{ benchmark }} {{ param }})</span>
+								<h3>{{ subscribers|length }} </h3><span class="small text-muted">new subsribers. (in last {{ benchmark }} {{ param }})</span>
 							</a>
 						</div>
 					</div>

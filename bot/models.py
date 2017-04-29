@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
-
+from django.utils.text import slugify
 from redactor.fields import RedactorField
 # Create your models here.
 
@@ -39,6 +39,10 @@ class QualificationCategory(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.name)
+		super().save(*args, **kwargs)
 
 
 class Qualification(models.Model):

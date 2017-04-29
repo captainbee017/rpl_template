@@ -1,7 +1,10 @@
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
+    FormView,
     TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 from bot.forms import VisitorQueryForm
 from bot.models import (
@@ -21,18 +24,22 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
-        ctx['subscribers'] = self.get_numbers()
+        ctx['subscribers'] = self.get_subscribers_numbers()
+        ctx['contacts'] = self.get_contacts_lists()
         ctx['benchmark'] = self.benchmark
         ctx['param'] = self.param
         return ctx
 
-    def get_numbers(self):
+    def get_contacts_lists(self):
+        obj = VisitorQuery.objects.all()
+        return obj
+
+    def get_subscribers_numbers(self):
         '''
         receives benchmark in days
         X signups in DD days
         Expected Numbers {'date': ['email1', 'email2'] }
         '''
-
         benchmark_date = timezone.now() - timedelta(days=self.benchmark)
         subscribers = NewslettterRequest.objects.filter(
             date__gte=benchmark_date)
@@ -118,22 +125,12 @@ class TestimonialUpdateView(LoginRequiredMixin, UpdateView):
     fields = ['dp', 'name', 'designation', 'message']
 
 
-    # form_class = TestimonialForm
-
-    # def post(self, *args, **kwargs):
-    #   return super().post(*args, **kwargs)
-
-    # def form_valid(self, form):
-    #   form.save()
-    #   return super().form_valid(form)
-
-    # def get_success_url(self):
-    #   return reverse('testimonials')
-
-
 class ContactUsCreateView(CreateView):
     model = VisitorQuery
     form_class = VisitorQueryForm
+    template_name = 'base.html'
 
     def get_success_url(self):
-        return reverse('base_view')
+        messages.success(
+            self.request, "Thanks for the message.")
+        return self.request.META.get('HTTP_REFERER', '/')
