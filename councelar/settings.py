@@ -25,9 +25,9 @@ SECRET_KEY = 'v#n6p7actx!%3sc%3$8%35gr2fqv7#ww_41mjwycg55-zwvjm('
 DROPBOX_KEY = 'gqV5tUUVyqYAAAAAAAAAmNVH370mqmMzDTE12v6lOn87qssOqqPVjSQYT5Tm4_FB'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['captainbee017.pythonanywhere.com']
 
 
 LOGIN_URL = 'cp_auth'
