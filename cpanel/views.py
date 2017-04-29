@@ -24,12 +24,17 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
-        ctx['subscribers'] = self.get_numbers()
+        ctx['subscribers'] = self.get_subscribers_numbers()
+        ctx['contacts'] = self.get_contacts_lists()
         ctx['benchmark'] = self.benchmark
         ctx['param'] = self.param
         return ctx
 
-    def get_numbers(self):
+    def get_contacts_lists(self):
+        obj = VisitorQuery.objects.all()
+        return obj
+
+    def get_subscribers_numbers(self):
         '''
         receives benchmark in days
         X signups in DD days
@@ -126,8 +131,6 @@ class ContactUsCreateView(CreateView):
     template_name = 'base.html'
 
     def get_success_url(self):
-        print("IM here")
         messages.success(
             self.request, "Thanks for the message.")
         return self.request.META.get('HTTP_REFERER', '/')
-        # return HttpResponseRedirect(self.request.META.get('HTTP_REFERER', '/'))
