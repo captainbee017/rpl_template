@@ -393,16 +393,10 @@ header {
 }
 
 .float-contact-form {
-	background: rgb(54, 25, 25); opacity: 0.6
+	background: rgb(54, 25, 25); opacity: 0.88;
 }
 
-
 /*@media screen and (min-width: 256px) and (max-width: 1024px) {
-.free-skill-box{
-	display: none;
-}*/
-
-@media screen and (min-width: 256px) and (max-width: 1024px) {
 	.free-skill-box-icon, .fsa-content>h4, .fsa-content>p {display: none;}
 }
 
@@ -416,11 +410,7 @@ header {
 	.free-skill-box {
 		margin-top: 40px !important;
 	}
-
-	/*.banner-content>p {
-		margin-top: 40px !important;
-	}*/
-}
+}*/
 
 
 .li-active {

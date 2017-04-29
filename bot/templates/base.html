@@ -2,19 +2,17 @@
 <html>
     <head>
         <title>RPL Finder</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="{% static 'typeahead/typeaheadjs.css' %}">
-        <link rel="stylesheet" href="{% static "custom/css/color.css" %}">
-        <link rel="stylesheet" href="{% static "custom/css/tools.css" %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
+        {# <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}"> #}
 
-        <link rel="stylesheet" href="{% static 'css/selectize.bootstrap3.css' %}">
-
+        <link rel="stylesheet" href="{% static 'custom/css/color.css' %}">
+        <link rel="stylesheet" href="{% static 'custom/css/tools.css' %}">
         {# section css #}
         <link rel="stylesheet" href="{% static 'css/pages/testimonials.css' %}">
         <link rel="stylesheet" href="{% static 'css/pages/banner-section.css' %}">
         <link rel="stylesheet" href="{% static 'css/pages/search-bar.css' %}">
+        
         {% block styles %}
             
         {% endblock styles %}
@@ -96,7 +94,7 @@
         {% block primary_container %}
 
         {# banner bar #}
-        <section class="search_section" id="search"style="height: 100%; background-image: url('{% static 'images/banner/rpl_banner.jpg' %}'); background-repeat: no-repeat; background-size: 100%;">
+        <section class="search_section" id="search"style="height: 80%; background-image: url('{% static 'images/banner/rpl_banner.jpg' %}'); background-repeat: no-repeat; background-size: 100%;">
             <div class="container">
                 <div class="row">
                     {# search box #}
@@ -120,7 +118,7 @@
                                 <h4 class="text-white no-margin">Lorem ipsum dolor sit amet</h4>
                                 <p class="p-v-lg no-margin">A card is a flexible and extensible content container.</p>
                                 <a href="{% url 'skill_asessment' %}" class="btn btn-primary btn-outline btn-lg">
-                                    FREE SKILL ASSESSMENT
+                                    <strong>FREE SKILL ASSESSMENT</strong>
                                 </a>
                             </div>
                         </div>
@@ -134,7 +132,7 @@
         {# popular qualifications #}
         <section id="popular_qualifications" class="p-v-lg">
             <div class="container">
-                <div class="section-header pt-13">
+                <div class="section-header pt-1">
                     <h3 class="section-title text-center text-xs-center"><strong>Popular Courses</strong></h3>
                 </div>
                 {% for qualification in popular_courses %}
@@ -298,10 +296,6 @@
         </section>
 
 
-
-
-        </section>
-
         {% endblock secondary_container %}
 
         {% endblock primary_container %}
@@ -343,27 +337,25 @@
         </section>
 
         <section class="contact-us clearfix">
-        <div class="col-md-3 float-contact-container">
-            <div class="col md-12 pull-right">
-                <button class="btn primary-green rounded-0" data-toggle="collapse" data-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact" style="border-radius: 0px">CONTACT US</button>
+            <div class="col-md-3 float-contact-container">
+                <div class="col md-12 pull-right">
+                    <button class="btn primary-green rounded-0" data-toggle="collapse" data-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact"><strong>CONTACT US</strong></button>
+                </div>
+                <div class="clearfix"></div>
+                <div class="collapse col-md-12 b text-white pt-1 float-contact-form" id="collapseContact">
+                    <form action="{% url 'contact_us_create' %}" method="POST" class="m-v">{% csrf_token %}
+                        {% bootstrap_form query_form %}
+                        <button class="btn btn-primary text-center rounded-0" type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
-            <div class="clearfix"></div>
-            <div class="collapse col-md-12 b text-white pt-1 float-contact-form" id="collapseContact">
-                <form action="{% url 'contact_us_create' %}" method="POST">{% csrf_token %}
-                    {% bootstrap_form query_form %}
-                    <button class="btn btn-primary text-center rounded-0" type="submit">Submit</button>
-                </form>
-            </div>
-        </div>
+        </section>
 
         {% endblock footer %}
     </body>
-    <script src="{% static "js/jquery.js" %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="{% static "js/tether.min.js" %}"></script>
-    <script src="{% static "js/typeahead/jquery.typeahead.js" %}"></script>
-    <script src="{% static "js/selectize.min.js" %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/tether.min.js' %}"></script>
     <script>
         $(document).ready(function(){
 
@@ -377,29 +369,7 @@
             },function () {
                 $(this,".list-group-item").css('background-color','white');
             });
-
-            $('#id_query').selectize({
-                valueField: 'id',
-                labelField: 'text',
-                searchField: 'text',
-                sortField: 'text',
-                load: function(query, callback){
-                    $.ajax({
-                        url: '{% url 'qualification_populate' %}',
-                        type: 'GET',
-                        data: {'query': query},
-                        success: function(data){
-                            callback(data);
-                        }
-                    })
-                }
-            })
         })
-        var dataSource = function(request, response){
-            $.get("{% url 'qualification_populate' %}", function(data){
-                response(data);
-            })
-        }
     </script>
     {% block javascript %}{% endblock %}
 </html>

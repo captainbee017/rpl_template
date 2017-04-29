@@ -57,13 +57,14 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="form-group" style="margin: 20px 0;">
-				<div class="input-group">
-                    <input type="text" placeholder="Search Qualifications" class="form-control input-lg" id="search">
-					<div class="input-group-addon addon-lg"><i class="fa fa-search"></i></div>
-				</div>
-            </div>
-		
+			<form action="{% url 'qualification_search' %}" method="GET">
+				<div class="form-group" style="margin: 20px 0;">
+					<div class="input-group">
+	                    <input type="text" placeholder="Search Qualifications" class="form-control input-lg" id="search" name="query">
+						<div class="input-group-addon addon-lg"><i class="fa fa-search"></i></div>
+					</div>
+	            </div>
+			</form>
 			<h3>Browse</h3><hr>
 			<ul class="list-unstyled">
 				{% for obj in qualification_category %}
@@ -71,13 +72,6 @@
 						<a href="{% url 'qualification_course' obj.slug %}">{{ obj.name }}</a>
 					</li>
 				{% endfor %}
-				{% comment %}
-				<li class="p-v">Retail Service</li>
-				<li class="p-v">Travel, Tourism and Hospitality</li>
-				<li class="p-v">Childcare and Community Services</li>
-				<li class="p-v">Training and Education Training</li>
-				<li class="p-v">Creative Arts and Culture Training</li>
-				{% endcomment %}
 			</ul>
 		</div>
 	</div>

@@ -16,14 +16,15 @@
     <div style="height: 270px; background-image: url('{% static 'images/banner/rpl_banner.jpg' %}'); background-repeat: no-repeat; background-size: 100%;">
         <div class="container">
             <div class="row" style="margin: 100px 0;">
-                
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" placeholder="Search Qualifications" class="form-control input-lg rounded-0" id="search">
-                            <div class="input-group-addon addon-lg rounded-0"><i class="fa fa-search"></i></div>
+                    <form action="{% url 'qualification_search' %}" method="GET">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search Qualifications" class="form-control input-lg rounded-0" id="search" name="query" value="{{ query_text }}">
+                                <div class="input-group-addon addon-lg rounded-0"><i class="fa fa-search"></i></div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-md-6">
                     <a href="{% url 'skill_asessment' %}" class="btn btn-primary rounded-0 btn-lg pull-right">
@@ -35,19 +36,27 @@
     </div>
 </section>
 
+
+    
 <section class="qualification-container" style="margin-top: 40px;">
-    <div class="container">
-        <div class="col-md-3">
-            <div class="list-group qualification_lists">
-                {% for object in object_list %}
-                    <a href="{% url 'qualification_course' object.slug %}" class="list-group-item" id="{{object.id}}">{{ object.name }}</a>
-                {% endfor %}
+    {% block parent_qualification_block %}
+        
+        <div class="container">
+            <div class="col-md-3">
+                <div class="list-group qualification_lists">
+                    {% for object in object_list %}
+                        <a href="{% url 'qualification_course' object.slug %}" class="list-group-item" id="{{object.id}}">{{ object.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-9">
+        
+                {% block qualification_courses %}{% endblock qualification_courses %}
+
             </div>
         </div>
-        <div class="col-md-9">
-            {% block qualification_courses %}{% endblock qualification_courses %}
-        </div>
-    </div>
+
+    {% endblock parent_qualification_block %}
 </section>
 
 {% endblock primary_container %}
