@@ -96,8 +96,7 @@
         {% block primary_container %}
 
         {# banner bar #}
-        <section class="search_section" id="search">
-            <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" class="img-fluid">
+        <section class="search_section" id="search"style="height: 100%; background-image: url('{% static 'images/banner/rpl_banner.jpg' %}'); background-repeat: no-repeat; background-size: 100%;">
             <div class="container">
                 <div class="row">
                     {# search box #}
@@ -141,7 +140,7 @@
                 {% for qualification in popular_courses %}
                     <div class="col-md-3">
                         <h4 class="h-40">{{ qualification.name }}</h4>
-                        <p class="text-justify">{{ qualification.description|truncatechars:250 }}</p>
+                        <p class="text-justify">{{ qualification.description|truncatechars:250|safe }}</p>
                         <p><a href="{% url 'qualification_detail_page' qualification.id %}">Read More</a></p>
                     </div>
                 {% endfor %}

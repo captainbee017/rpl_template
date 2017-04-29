@@ -68,3 +68,13 @@ class Command(BaseCommand):
 					status=PUBLISHED)
 
 			self.stdout.write('Qualification {}'.format(obj.name))
+
+		self.update_slug()
+
+	def update_slug(self):
+		for obj in QualificationCategory.objects.all():
+			name = obj.name.replace(',', '').replace(' ', '-')
+			slug = '{}-{}'.format(name, obj.id)
+			obj.slug=slug
+			obj.save()
+		return

@@ -2,6 +2,10 @@
 	color: #fafafa;
 }
 
+.text-black {
+	color: #333333 !important;
+}
+
 
 .bg-white {
 	background-color: #fafafa;

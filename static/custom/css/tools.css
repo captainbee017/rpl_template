@@ -417,7 +417,13 @@ header {
 		margin-top: 40px !important;
 	}
 
-	.banner-content>p {
+	/*.banner-content>p {
 		margin-top: 40px !important;
-	}
+	}*/
+}
+
+
+.li-active {
+    border-left: 2px solid #2e6da4;
+    font-weight: bold;
 }

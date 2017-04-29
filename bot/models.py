@@ -35,6 +35,7 @@ class VisitorQuery(models.Model):
 
 class QualificationCategory(models.Model):
 	name = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=100, null=True)
 
 	def __str__(self):
 		return self.name
@@ -49,6 +50,8 @@ class Qualification(models.Model):
 	code = models.CharField(max_length=100, unique=True, null=True)
 	name = models.CharField(max_length=200)
 	description = RedactorField(null=True)
+	duration = models.CharField(max_length=100, null=True)
+	study_mode = models.CharField(max_length=100, null=True)
 	job_roles = RedactorField(null=True)
 	pathways = RedactorField(null=True)
 	fees = RedactorField(null=True)

@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, FormView, DetailView, ListView
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import get_object_or_404
 
 from bot.forms import NewspaperSignUp, QualificationSearchForm
 from django.contrib import messages
@@ -34,17 +35,38 @@ class LandingPageView(FormView):
 
 class QualificationView(ListView):
     model = QualificationCategory
-    template_name = 'qualification_page.html'
+    template_name = '__qualification_page.html'
 
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx['search_form'] = QualificationSearchForm
         return ctx
 
+class QualificationCategoryView(DetailView):
+    model = QualificationCategory
+    template_name = 'qualification_course.html'
+
+    def get_object(self, *args, **kwargs):
+        if 'slug' not in self.kwargs:
+            return QualificationCategory.objects.all()[0]
+        else:
+            return get_object_or_404(QualificationCategory, slug=self.kwargs['slug'])
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['search_form'] = QualificationSearchForm
+        ctx['object_list'] = QualificationCategory.objects.all()
+        return ctx
+
 
 class QualificationDetailView(DetailView):
     model = Qualification
     template_name = 'qualification_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        ctx['qualification_category'] = QualificationCategory.objects.all()
+        return ctx
 
 
 class RPLSkillRecognitionView(TemplateView):

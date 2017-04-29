@@ -6,7 +6,7 @@ from django.conf.urls import url, include
 
 from bot.views.index import (
     LandingPageView, QualificationView, QualificationDetailView,
-    PartnersView, ContactUsView, ApplyNowView)
+    PartnersView, ContactUsView, ApplyNowView, QualificationCategoryView)
 from bot.views.qualification_search import QualificationSearch
 
 from bot.views.fsa import SkillAsessment
@@ -18,7 +18,11 @@ urlpatterns = (
     url(r'^$', LandingPageView.as_view(), name='base_view'),
 
     url(r'^qualification/$',
-        QualificationView.as_view(), name='qualification_page'),
+        QualificationCategoryView.as_view(), name='qualification_page'),
+        # QualificationView.as_view(), name='qualification_page'),
+
+    url(r'^qualification/courses/(?P<slug>[\w-]+)/$',
+        QualificationCategoryView.as_view(), name='qualification_course'),
 
     url(r'^qualification/search/$',
         QualificationSearch.as_view(), name='qualification_search'),

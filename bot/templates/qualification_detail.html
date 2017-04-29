@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% load staticfiles %}
-{% block stylesheet %}
 
-<style>
+{% block styles %}
 
-</style>
+	<link rel="stylesheet" href="{% static 'css/pages/qualification-page.css' %}">
+
 {% endblock %}
 
 {% block nav_qualification %}active b-b{% endblock %}
 
 {% block primary_container %}
-<section class="search_section" id="search" style="background-color: #009688">
-    {# <img src="{% static 'images/banner/rpl_banner.jpg' %}" alt="" id="rpl" width="100%" height="30%" class="img-fluid"> #}
-    <div class="container">
-        <h2><strong>
-            <p>{{ object.name }}</p>
-        </strong></h2>
-    </div>
+<section class="search_section" id="search">
+    <ol class="breadcrumb breadcrumb-arrow rounded-0">
+		<div class="container">
+			<li><a class="rounded-0" href="{% url 'qualification_course' object.category.slug %}"><h3>{{ object.category.name }}</h3></a></li>
+			<li class="active"><span><h3>{{ object.name }}</h3></span></li>
+		</div>
+	</ol>
 </section>
 
 <section class="details">
@@ -46,12 +46,12 @@
 					
 					{% if object.packaging_rule %}
 						<h3>Qualification Packaging Rules</h3><hr>
-						{{ object.packaging_rule}}
+						{{ object.packaging_rule|safe }}
 					{% endif %}
 					
 					{% if object.how_it_works %}
 						<h3>How it Works?</h3><hr>
-						{{ object.how_it_works }}
+						{{ object.how_it_works|safe }}
 					{% endif %}
 				</div>
 			</div>
@@ -65,12 +65,19 @@
             </div>
 		
 			<h3>Browse</h3><hr>
-			<ul>
+			<ul class="list-unstyled">
+				{% for obj in qualification_category %}
+					<li class="p-v">
+						<a href="{% url 'qualification_course' obj.slug %}">{{ obj.name }}</a>
+					</li>
+				{% endfor %}
+				{% comment %}
 				<li class="p-v">Retail Service</li>
 				<li class="p-v">Travel, Tourism and Hospitality</li>
 				<li class="p-v">Childcare and Community Services</li>
 				<li class="p-v">Training and Education Training</li>
 				<li class="p-v">Creative Arts and Culture Training</li>
+				{% endcomment %}
 			</ul>
 		</div>
 	</div>

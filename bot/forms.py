@@ -103,7 +103,7 @@ class QualificationSearchForm(forms.Form):
     query = forms.ModelChoiceField(
         queryset=Qualification.objects.all(),
         empty_label='Enter the course you want to study',
-        widget=forms.Select(attrs={'class': 'input-lg'}))
+        widget=forms.Select(attrs={'class': 'input-lg rounded-0'}))
 
 
 class VisitorQueryForm(forms.ModelForm):
