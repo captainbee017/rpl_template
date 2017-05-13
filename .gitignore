@@ -1,2 +1,6 @@
 *.pyc
 rpldb.sqlite3
+
+# Basics
+*.py[cod]
+__pycache__
