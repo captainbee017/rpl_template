@@ -1,0 +1,376 @@
+<html>
+    <head>
+        <style>
+            body {
+                background-color: #F7F7F7 !important;
+            }
+
+        </style>
+        <title>RPL Finder</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="keywords" content="Skills recognition, Recognition prior learning, Skill Certified, Work experience, Qualify me, Get qualified, Qualification, RPL, Commercial Hospitality, Diploma of Business, Hospitality experience,"/>
+        <meta name="Description" content=""/>
+        <meta name="author" content=""/>
+
+        <!-- library styles -->
+        <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/utility/tools.css">
+        <link rel="stylesheet" href="static/utility/testimonials.css">
+    </head>
+    <body>  
+        <!-- {# header top bar F3F7FD #} -->
+        <header class="top-header b-b border-bottom-1">
+            <nav class="navbar navbar-toggleable-md navbar-light bg-faded p-0">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item border-right-1">
+                                <a class="nav-link" href="#">info@rplfinder.com</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">f</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">t</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Y</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- {# navigation bar #} -->
+        <header class="primary-nav">
+            <div class="container">
+                <nav class="navbar navbar-toggleable-md navbar-light bg-faded pr-0">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="">
+                        <img id="cd-logo" class="logo is-hidden slide-in" src="static/images/logo/rpl-logo.png" alt="RPL Finder" height="62px;">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="qualification.html">QUALIFICATIONS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="skill_recognition.html">RPL & SKILL RECOGNITION</a>
+                            </li>
+                            <li class="nav-item float-right">
+                                <a class="nav-link" href="contact.html">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    
+
+        <!-- {# banner bar #} -->
+        <section class="search_section" id="search" style="background-image: url('static/images/banner/rpl_banner.jpg'); background-repeat: no-repeat; background-size: 100%;">
+            <div class="container">
+                <div class="row mx-auto text-center">
+
+                    <div class="ml-auto mr-auto my-4">
+                        <h1 class="text-white text-center">
+                            <strong><p>Education Needs</p> <p>Complete Solutions</p></strong>
+                        </h1><br>
+
+                        <p class="text-white">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p><br>
+                        
+                        <!-- {# search bar #} -->
+                        <div id="qualification_form">
+                            <form action="{% url 'qualification_search' %}" method="GET">
+                                <div class="my-search-form">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Search Qualifications" class="form-control form-control-lg rounded-0" id="search" name="query" value="">
+                                            <button type="button" class="btn btn-success rounded-0">SEARCH</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- {# free skill assessment #} -->
+                        <!-- flexbox -->
+                        <div class="row no-gutters">
+                            <div class="card rounded-0 p-4">
+                                <img src="static/images/icons/checklist.png" alt="Free Skill Assessment">
+                            </div>
+                            <div class="p-3 text-left card rounded-0 bg-green text-white col-md">
+                                <h4>Lorem ipsum dolor sit amet</h4>
+                                <p class="mb-1">A card is a flexible and extensible content container.</p>
+                                <a href="skill_assessment.html" class="btn btn-outline-primary btn-lg rounded-0 text-white w-60">
+                                    <strong>FREE SKILL ASSESSMENT</strong>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- {# popular qualifications #} -->
+        <section id="popular_qualifications">
+            <div class="container">
+                <div class="section-header">
+                    <h3 class="section-title text-center text-xs-center"><strong>Popular Courses</strong></h3>
+                </div>
+                <div class="row py-5">
+                    <div class="col-md-3">
+                        <h4 class="h-40">Certificate II in Business</h4>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+                        </p>
+                        <p><a href="qualification_detail.html">Read More</a></p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4 class="h-40">Certificate II in Business</h4>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+                        </p>
+                        <p><a href="qualification_detail.html">Read More</a></p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4 class="h-40">Certificate II in Business</h4>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+                        </p>
+                        <p><a href="qualification_detail.html">Read More</a></p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4 class="h-40">Certificate II in Business</h4>
+                        <p class="text-justify">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, 
+                        </p>
+                        <p><a href="qualification_detail.html">Read More</a></p>
+                    </div>
+                    
+                </div>
+                <!-- {% endfor %} -->
+            </div>
+        </section>
+
+        <section id="why_rpl" style="background-image: url('static/images/banner/Picture-3.png'); background-repeat: no-repeat; background-size: auto;">
+            <div class="container py-5">
+                <div class="section-header pt-1">
+                    <h3 class="section-title text-center text-white"><strong>Why RPL with RPL Finder?</strong></h3>
+                </div>
+                <div class="row py-5">
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icon4.png" alt="VET accredited support">
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icon-2.png" alt="VET accredited support">
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icoin3.png" alt="VET accredited support">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-center text-white">
+                        <h5>VET accredited Courses</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <h5>Ongoing Support</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <h5>Gap Training</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icon4.png" alt="VET accredited support">
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icon-2.png" alt="VET accredited support">
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <img src="static/images/icons/Icoin3.png" alt="VET accredited support">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-center text-white">
+                        <h5>Professional Advisor</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <h5>Faster Processing</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                    <div class="col-md-4 text-center text-white">
+                        <h5>Gap Training</h5>
+                        <p class="text-muted">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- {# happy clients #} -->
+        <!-- <section id="testimonial">
+            <div class="container py-5">
+                <div class="section-header">
+                    <h3 class="section-title text-center"><strong>Our Happy Clients</strong></h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+                        <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+                            <ol class="carousel-indicators">
+                                <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
+                                <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+                                <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                                <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                                <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                                <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item">
+                                    <div class="profile-circle"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <div class="profile-circle"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="active item">
+                                    <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <div class="profile-circle"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <div class="profile-circle"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                                <div class="item">
+                                    <div class="profile-circle"></div>
+                                    <blockquote>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section id="sign_up_newsletter" class="bg-grey-200">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-md-1">
+                        <img src="static/images/icons/email-icon.png" alt="" width="157%">
+                    </div>
+                    <div class="col-md-5 pl-5">
+                        <h4>Sign up For Newsletter</h4>
+                        <p class="text-muted mb-0 mt-4">Lorem ipsum dolor sit amet, consectur von newman sit von dough</p>
+                    </div>
+                    <div class="col-md-6 my-auto">
+                        <form action="" method="POST" class="">
+                            <div class="input-group">
+                                <input id="id_email" class="form-control input-lg rounded-0" name="email" placeholder="Your Email Address" required="" maxlength="93" type="text">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success input-lg rounded-0" type="submit" style="border-color: #BDBDBD !important">SIGN UP</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
+        <section id="footer" class="bg-footer">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <h4 class="heading7 text-white">SITEMAP</h4>
+                        <ul class="footer-ul list-unstyled">
+                            <li class="py-2"><a href="" class="text-grey-400"> About Us</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400"> RPL FAQs</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400"> Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <h4 class="heading7 text-white">POPULAR COURSES</h4>
+                        <ul class="footer-ul list-unstyled">
+                            <li class="py-2"><a href="" class="text-grey-400">Course One</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400">Privacy Commitment</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400">Term of Use</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400">Report Bug and Abuse</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <h4 class="heading7 text-white">CONTACTS</h4>
+                        <ul class="footer-ul list-unstyled">
+                            <li class="py-2"><a href="" class="text-grey-400">Adress detail, Here</a></li>
+                            <li class="py-2"><a href="" class="text-grey-400">123455, 1123456</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="footer_copyright" class="clearfix text-grey bg-black">
+            <p class="text-center py-2 mb-0">Copyright &copy; 2017 RPL Finder. All rights reserved.</p>
+        </section>
+
+        <!-- <section class="contact-us clearfix">
+            <div class="col-md-3 float-contact-container">
+                <div class="col md-12 pull-right">
+                    <button class="btn primary-green rounded-0" data-toggle="collapse" data-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact"><strong>CONTACT US</strong></button>
+                </div>
+                <div class="clearfix"></div>
+                <div class="collapse col-md-12 b text-white pt-1 float-contact-form" id="collapseContact">
+                    <form action="" method="POST" class="m-v">
+                        <input type="text" class="form-control">
+                        <button class="btn btn-primary text-center rounded-0" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section> -->
+    </body>
+
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</html>
+

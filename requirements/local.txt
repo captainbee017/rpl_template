@@ -1,3 +1,0 @@
-ipython
-django-extensions
-pygraphviz

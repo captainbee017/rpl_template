@@ -1,0 +1,52 @@
+/*borders*/
+
+.border-right-1 {
+	border-right: 1px solid #bdbdbd;
+}
+
+.border-bottom-1 {
+	border-bottom: 1px solid #bdbdbd;
+}
+
+
+/* background colors*/
+.bg-green {
+	background-color: #01A552;
+}
+
+.bg-footer {
+	background-color: #322D3E;
+}
+
+.bg-black {
+	background-color: #1E1E25;
+}
+
+.bg-grey-200 {
+	background-color: #DEDEDE;
+}
+
+/*text-colors*/
+
+.text-grey {
+	color: #fafafa;
+}
+
+.text-grey-400 {
+	color: #bdbdbd;
+}
+
+
+/*width*/
+.w-79 {
+	width: 79%;
+}
+
+.w-60 {
+	width: 60%;
+}
+
+
+.rounded-0 {
+	border-radius: 0 !important;
+}
