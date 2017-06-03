@@ -1,5 +1,9 @@
 /*borders*/
 
+.border-tpo-1 {
+	border-top: 1px solid #bdbdbd;
+}
+
 .border-right-1 {
 	border-right: 1px solid #bdbdbd;
 }

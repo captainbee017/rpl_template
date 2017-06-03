@@ -9,6 +9,19 @@
                 display:block;
             }
 
+            .float-container {
+                width: 100%;
+                position: fixed;
+                z-index: 110;
+                bottom: 0px;
+                /*background: rgba(0,0,0,0.3) !important;*/
+                background-color: rgb(0,128,128) !important;
+            }
+
+            .section-title {
+
+            }
+
         </style>
         <title>RPL Finder</title>
         <meta charset="utf-8">
@@ -36,20 +49,20 @@
                             <li class="nav-item border-right-1">
                                 <a class="nav-link" href="#">info@rplfinder.com</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">f</a>
+                            <li class="nav-item m-1 mx-3">
+                                <a href=""><img src="static/images/icons/facebook.svg" alt="" class="nav-link"></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">t</a>
+                            <li class="nav-item m-1 mx-3">
+                                <a href=""><img src="static/images/icons/google-plus.svg" alt="" class="nav-link"></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">in</a>
+                            <li class="nav-item m-1 mx-3">
+                                <img src="static/images/icons/linkedin.svg" alt="" class="nav-link">
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">In</a>
+                            <li class="nav-item m-1 mx-3">
+                                <img src="static/images/icons/twitter.svg" alt="" class="nav-link">
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Y</a>
+                            <li class="nav-item m-1 mx-3">
+                                <img src="static/images/icons/youtube.svg" alt="" class="nav-link">
                             </li>
                         </ul>
                     </div>
@@ -79,7 +92,7 @@
                                 <a class="nav-link" href="skill_recognition.html">RPL & SKILL RECOGNITION</a>
                             </li>
                             <li class="nav-item float-right">
-                                <a class="nav-link" href="contact.html">CONTACT US</a>
+                                <a class="nav-link" href="reach_us.html">REACH US</a>
                             </li>
                         </ul>
                     </div>
@@ -89,9 +102,9 @@
     
 
         <!-- {# banner bar #} -->
-        <section class="search_section" id="search" style="background-image: url('static/images/banner/rpl_banner.jpg'); background-repeat: no-repeat; background-size: 100%;">
-            <div class="container">
-                <div class="row mx-auto text-center">
+        <section class="search_section" id="search" style="background-image: url('static/images/banner/goals-1.jpg'); background-size: cover; height: 562px;">
+            <div class="container py-5">
+                <div class="row mx-auto text-center py-5">
 
                     <div class="ml-auto mr-auto my-4">
                         <h1 class="text-white text-center">
@@ -117,7 +130,7 @@
                         
                         <!-- {# free skill assessment #} -->
                         <!-- flexbox -->
-                        <div class="row no-gutters">
+                        <!-- <div class="row no-gutters">
                             <div class="card rounded-0 p-4">
                                 <img src="static/images/icons/checklist.png" alt="Free Skill Assessment">
                             </div>
@@ -128,7 +141,7 @@
                                     <strong>FREE SKILL ASSESSMENT</strong>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -137,7 +150,7 @@
 
         <!-- {# popular qualifications #} -->
         <section id="popular_qualifications">
-            <div class="container">
+            <div class="container py-5">
                 <div class="section-header">
                     <h3 class="section-title text-center text-xs-center"><strong>Popular Courses</strong></h3>
                 </div>
@@ -390,12 +403,72 @@
                 </div>
             </div>
         </section> -->
-    </body>
+
+    <section class="float-container">
+        <div class="col-12 border-top-1">
+            <div class="row my-2">
+                <div class="col-6">
+                    <a class="btn btn-outline-secondary rounded-0" href=""><strong>FREE SKILL ASSESSMENT</strong></a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-outline-secondary rounded-0 float-right" aria-expanded="false" aria-controls="collapseContact" data-toggle="modal" data-target="#myModal">
+                        <strong>CONTACT US</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <div class="mx-auto">
+                            
+                        <h4 class="text-muted text-center">SEND US A MESSAGE</h4>
+                        <h6 class="text-muted text-center">Fill in the details below and we will reach you.</h6>
+                        </div>
+                        <button type="button" class="close pb-5" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST"> 
+                        <div class="form-group row px-4 py-2">
+                            <label for="formGroupExampleInput" class="col-3 text-right">Name</label>
+                            <input type="text" class="form-control rounded-0 col-9" id="formGroupExampleInput" placeholder="">
+                        </div>
+                        <div class="form-group row px-4 py-2">
+                            <label for="formGroupExampleInput2" class="col-3 text-right">Email</label>
+                            <input type="text" class="form-control col-9 rounded-0" id="formGroupExampleInput2" placeholder="">
+                        </div>
+                        <div class="form-group row px-4 py-2">
+                            <label for="formGroupExampleInput2" class="col-3 text-right">Phone Number</label>
+                            <input type="text" class="form-control col-9 rounded-0" id="formGroupExampleInput2" placeholder="">
+                        </div>
+                        <div class="form-group row px-4 py-2">
+                            <label for="formGroupExampleInput2" class="col-3 text-right">Message</label>
+                            <!-- <input type="textarea" class="form-control col-9 rounded-0" id="formGroupExampleInput2" placeholder=""> -->
+                            <textarea class="form-control col-9 rounded-0" name="" id="formGroupExampleInput2" cols="30" rows="7"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success mx-auto rounded-0">SEND MESSAGE</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <div class="" style="display: none;">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    </body>
+
     <script src="static/jquery.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
     <script>
         $('.carousel').carousel();
+
     </script>
 </html>
 
